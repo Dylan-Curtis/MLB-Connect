@@ -1,12 +1,12 @@
 class CreateGames < ActiveRecord::Migration[6.1]
   def change
     create_table :games do |t|
-      t.integer :team1 
-      t.integer :team2 
-      t.integer :team3 
-      t.integer :team4 
-      t.integer :team5 
-      t.integer :team6 
+      t.references :team1, null: false, foreign_key: { to_table: :team } 
+      t.references :team2, null: false, foreign_key: { to_table: :team } 
+      t.references :team3, null: false, foreign_key: { to_table: :team } 
+      t.references :team4, null: false, foreign_key: { to_table: :team } 
+      t.references :team5, null: false, foreign_key: { to_table: :team } 
+      t.references :team6, null: false, foreign_key: { to_table: :team } 
       t.timestamp :game_time
 
       t.timestamps

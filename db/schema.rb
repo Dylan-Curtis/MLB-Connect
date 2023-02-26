@@ -13,15 +13,21 @@
 ActiveRecord::Schema.define(version: 2023_02_24_210011) do
 
   create_table "games", force: :cascade do |t|
-    t.integer "team1"
-    t.integer "team2"
-    t.integer "team3"
-    t.integer "team4"
-    t.integer "team5"
-    t.integer "team6"
+    t.integer "team1_id", null: false
+    t.integer "team2_id", null: false
+    t.integer "team3_id", null: false
+    t.integer "team4_id", null: false
+    t.integer "team5_id", null: false
+    t.integer "team6_id", null: false
     t.datetime "game_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["team1_id"], name: "index_games_on_team1_id"
+    t.index ["team2_id"], name: "index_games_on_team2_id"
+    t.index ["team3_id"], name: "index_games_on_team3_id"
+    t.index ["team4_id"], name: "index_games_on_team4_id"
+    t.index ["team5_id"], name: "index_games_on_team5_id"
+    t.index ["team6_id"], name: "index_games_on_team6_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -44,6 +50,7 @@ ActiveRecord::Schema.define(version: 2023_02_24_210011) do
 
   create_table "teams", id: false, force: :cascade do |t|
     t.integer "team_id"
+    t.string "name"
     t.string "logo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -57,6 +64,12 @@ ActiveRecord::Schema.define(version: 2023_02_24_210011) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "games", "team", column: "team1_id"
+  add_foreign_key "games", "team", column: "team2_id"
+  add_foreign_key "games", "team", column: "team3_id"
+  add_foreign_key "games", "team", column: "team4_id"
+  add_foreign_key "games", "team", column: "team5_id"
+  add_foreign_key "games", "team", column: "team6_id"
   add_foreign_key "players", "teams"
   add_foreign_key "scores", "games"
   add_foreign_key "scores", "users"
