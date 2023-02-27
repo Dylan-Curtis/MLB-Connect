@@ -1,10 +1,11 @@
 require 'uri'
 require 'net/http'
 require 'json'
+require 'openssl'
 
 
 User.destroy_all
-Team.destroy_all
+# Team.destroy_all
 Player.destroy_all
 Game.destroy_all
 Score.destroy_all
@@ -78,7 +79,7 @@ Team.create(team_id: 118, logo:'https://i.pinimg.com/originals/33/97/63/33976338
 Team.create(team_id: 116, logo:'https://i.pinimg.com/originals/33/97/63/33976338060f9742b68a4ed7611d34a9.gif', name:'Tigers')
 
 #Gardians
-Team.create(team_id: 114, logo:'https://fox8.com/wp-content/uploads/sites/12/2021/07/Script-Guardians-on-White-1.jpg?strip=1', name:  'Gardians')
+Team.create(team_id: 114, logo:'https://images.squarespace-cdn.com/content/v1/5a124f7e692ebe2f3e5dff7c/1628003716825-2IZPUAK8U3T1NYVQMLEW/cleveland-guardians-logo-insomniac-studios-28.jpg', name:  'Guardians')
 
 #White Sox
 Team.create(team_id: 145, logo:'https://i.ebayimg.com/images/g/7~wAAOSw-R5cf2Co/s-l400.jpg', name:'White Sox')
@@ -101,32 +102,37 @@ Team.create(team_id: 108, logo:'https://content.sportslogos.net/logos/53/922/ful
 #Mariners
 Team.create(team_id: 136, logo:'https://i.pinimg.com/originals/b6/e0/19/b6e019b0198559137cc3b2faedccfe64.gif', name:'Mariners')
 
-puts 'creating players...'
-   
+puts 'creating players'
 
 team_ids = [121, 120, 146, 143, 144, 134, 113, 158, 138, 112, 135, 119, 109, 115, 137, 147, 111, 110, 141, 139, 118, 116, 114, 145]
 
-options = {
-  headers: {
-    'X-RapidAPI-Key': '38368f629fmsh117a78cdc45ef42p1e9694jsn8c07e52f4c3c',
-    'X-RapidAPI-Host': 'mlb-data.p.rapidapi.com'
-  }
-}
-
-def get_data_from_api(team_ids, options)
+def get_data_from_api(team_ids)
   team_ids.each do |id|
-    uri = URI.parse("https://mlb-data.p.rapidapi.com/json/named.roster_team_alltime.bam?start_season=1994&team_id=#{id}&end_season=2022&sort_order=name_asc.col_in=name_first_last")
-    response = Net::HTTP.get_response(uri)
-    if response.is_a?(Net::HTTPSuccess)
-      roster = JSON.parse(response.body)["roster_team_alltime"]["queryResults"]["row"]
-      Player.create(name: roster["name_first_last"], team: roster["team_id"])
-    else
-      # Handle error case
-      raise "Failed to fetch data from API: #{response.code} #{response.message}"
+    puts id
+    # uri = URI.parse("https://mlb-data.p.rapidapi.com/json/named.roster_team_alltime.bam?start_season=1994&team_id=#{id}&end_season=2022&sort_order=name_asc.col_in=name_first_last")
+    url = URI("https://mlb-data.p.rapidapi.com/json/named.roster_team_alltime.bam?start_season='1994'&team_id=#{id}&end_season='2022'&sort_order=name_asc")
+    
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    
+    request = Net::HTTP::Get.new(url)
+    request["X-RapidAPI-Key"] = '38368f629fmsh117a78cdc45ef42p1e9694jsn8c07e52f4c3c'
+    request["X-RapidAPI-Host"] = 'mlb-data.p.rapidapi.com'
+    
+    response = http.request(request)
+    
+    roster = JSON.parse(response.body)["roster_team_alltime"]["queryResults"]["row"]
+    roster.each do |bbb|      
+      # puts bbb
+      team_id = Team.find_by_team_id(bbb["team_id"].to_i)
+      # puts team_id
+    Player.create!(name: bbb["name_first_last"], team: team_id)
     end
   end
 end
 
+get_data_from_api(team_ids)
 
 puts 'creating user'
 
@@ -151,5 +157,5 @@ puts 'creating games'
     game: Game.all.sample,
     time: rand(0.0..5.0)
     )}
-
+  
     puts 'finished seeding'

@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2023_02_24_210011) do
     t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
-  create_table "teams", id: false, force: :cascade do |t|
+  create_table "teams", force: :cascade do |t|
     t.integer "team_id"
     t.string "name"
     t.string "logo"
