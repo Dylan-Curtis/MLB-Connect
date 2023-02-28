@@ -1,26 +1,31 @@
- import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
+import GameContainer from './GameContainer'
 
 function Dashboard() {
-     useEffect(() => {
-       const options = {
-         method: 'GET',
-         headers: {
-           'X-RapidAPI-Key': '38368f629fmsh117a78cdc45ef42p1e9694jsn8c07e52f4c3c',
-           'X-RapidAPI-Host': 'mlb-data.p.rapidapi.com'
-         }
-       };
-    
-       fetch('https://mlb-data.p.rapidapi.com/json/named.roster_team_alltime.bam?start_season=1994&team_id=121&end_season=2022&sort_order=name_asc.col_in=name_first_last', options)
-         .then(response => response.json())
-         .then(response => console.log(response))
-         .catch(err => console.error(err));
-    }, []);
-
+  const [showNavBar, setShowNavBar] = useState(false)
+  const [user, setUser] = useState(null)
+  const [errors, setErrors] = useState([]);
  
+  useEffect(()=> {
+    const fetchUser = async () =>{        
+      const response = await fetch('authorized_user')
+      if (response.ok){
+      const user = await response.json() 
+      setUser(user)
+    }
+else{
+const error = response.json()
+console.log(error.error)
+// setErrors(error.error)
+}
+    }
+    if(!user){
+    fetchUser()}
+  },[user, setErrors, setUser])
 
     return(
         <div>
-
+          <GameContainer/>
         </div>
 )}
 export default Dashboard
