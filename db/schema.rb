@@ -64,12 +64,12 @@ ActiveRecord::Schema.define(version: 2023_02_24_210011) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "games", "team", column: "team1_id"
-  add_foreign_key "games", "team", column: "team2_id"
-  add_foreign_key "games", "team", column: "team3_id"
-  add_foreign_key "games", "team", column: "team4_id"
-  add_foreign_key "games", "team", column: "team5_id"
-  add_foreign_key "games", "team", column: "team6_id"
+  add_foreign_key "games", "teams", column: "team1_id"
+  add_foreign_key "games", "teams", column: "team2_id"
+  add_foreign_key "games", "teams", column: "team3_id"
+  add_foreign_key "games", "teams", column: "team4_id"
+  add_foreign_key "games", "teams", column: "team5_id"
+  add_foreign_key "games", "teams", column: "team6_id"
   add_foreign_key "players", "teams"
   add_foreign_key "scores", "games"
   add_foreign_key "scores", "users"

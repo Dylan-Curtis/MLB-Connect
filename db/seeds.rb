@@ -4,9 +4,10 @@ require 'json'
 require 'openssl'
 
 
+
 User.destroy_all
-# Team.destroy_all
 Player.destroy_all
+Team.destroy_all
 Game.destroy_all
 Score.destroy_all
 
@@ -104,13 +105,14 @@ Team.create(team_id: 136, logo:'https://i.pinimg.com/originals/b6/e0/19/b6e019b0
 
 puts 'creating players'
 
-team_ids = [121, 120, 146, 143, 144, 134, 113, 158, 138, 112, 135, 119, 109, 115, 137, 147, 111, 110, 141, 139, 118, 116, 114, 145]
+team_ids = [121
+  # ,  120, 146, 143, 144, 134, 113, 158, 138, 112, 135, 119, 109, 115, 137, 147, 111, 110, 141, 139, 118, 116, 114, 145, 142, 133, 117, 140, 108, 136
+]
 
 def get_data_from_api(team_ids)
   team_ids.each do |id|
     puts id
-    # uri = URI.parse("https://mlb-data.p.rapidapi.com/json/named.roster_team_alltime.bam?start_season=1994&team_id=#{id}&end_season=2022&sort_order=name_asc.col_in=name_first_last")
-    url = URI("https://mlb-data.p.rapidapi.com/json/named.roster_team_alltime.bam?start_season='1994'&team_id=#{id}&end_season='2022'&sort_order=name_asc")
+    url = URI("https://mlb-data.p.rapidapi.com/json/named.roster_team_alltime.bam?start_season='2021'&team_id=#{id}&end_season='2022'&sort_order=name_asc")
     
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -141,15 +143,15 @@ User.create(name: 'Dylan', email: "dcurtisj@gmail.com", password:"password")
 puts 'creating games'
 
 15.times {
-  team_ids = Team.pluck(:team_id).shuffle.uniq.take(6)  
-  Game.create(  
-  team1: Team.find_by_team_id(team_id: team_ids[0]),
-  team2: Team.find_by_team_id(team_id: team_ids[1]),
-  team3: Team.find_by_team_id(team_id: team_ids[2]),
-  team4: Team.find_by_team_id(team_id: team_ids[3]), 
-  team5: Team.find_by_team_id(team_id: team_ids[4]),
-  team6: Team.find_by_team_id(team_id: team_ids[5]),  
-  )}
+  team_ids = Team.pluck(:team_id).shuffle.uniq.take(6) 
+   Game.create!(  
+  team1: Team.find_by_team_id( team_ids[0]),
+  team2: Team.find_by_team_id( team_ids[1]),
+  team3: Team.find_by_team_id( team_ids[2]),
+  team4: Team.find_by_team_id( team_ids[3]), 
+  team5: Team.find_by_team_id( team_ids[4]),
+  team6: Team.find_by_team_id( team_ids[5]), 
+   )}
 
   puts 'creating scores'
   10.times {Score.create(
