@@ -18,7 +18,7 @@ console.log("submit");
  return (
           <>        
             <form onSubmit={handleSubmit} class= "form">                          
-                
+                <div>
                 <input
                   type="text"
                   id="cellOne"
@@ -44,7 +44,8 @@ console.log("submit");
                   value={cellThree}
                   onChange={(e) => setCellThree(e.target.value)}
                 />  
-
+              </div>
+              <div>
                 <input
                   type="text"
                   id="cellFour"
@@ -68,7 +69,7 @@ console.log("submit");
                   class="input-container"
                   value={cellSix}
                   onChange={(e) => setCellSix(e.target.value)}
-                /> 
+                /> </div>
                  <input
                   type="text"
                   id="cellSeven"
