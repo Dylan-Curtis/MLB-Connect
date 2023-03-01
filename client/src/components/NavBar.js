@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 // import {FaBars, FaTimes } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
+import {Link} from 'react-router-dom'
+
 
 
 const Navbar = ({user, setUser}) => {
@@ -33,7 +35,8 @@ const Navbar = ({user, setUser}) => {
             onClick={() =>  navigate('/')}
             >MLB Connect</h3>
             <nav ref={navRef}>
-                <a href='/user'>User</a>
+            { user ? <h1 className= "userInfoHeader">Hello, {user.name}</h1>: <div><Link to="login" ><button className = "logInButton">Login</button></Link> <Link to="signup"><button className = "signupButton">Sign Up</button></Link> </div>}
+
                 <a href='/characters'>How to Play</a>
                 <a href='/stats'>Stats</a>           
                 <a href='/stats' onClick={logout}>Logout</a>  

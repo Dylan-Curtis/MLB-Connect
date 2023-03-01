@@ -100,3 +100,65 @@ header .nav-btn{
   }
 
 }
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #7D7B7B;
+  font-size: 18px;   
+  width: 100%; 
+  margin-bottom: 1vw;
+  
+}
+
+.form {
+  background-color: #D9D9D9;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: relative;
+  padding: 20px;
+  width: 320px;
+  justify-self: center;
+  
+  margin-left: auto;
+  margin-right: auto;  
+  
+}
+.logInButton:hover {
+  background: #D1D8D2;
+  color: #4C6251;
+}
+
+.logInButton:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}
+
+.logInButton:focus {
+  outline: none;
+  border: 2px solid #4285f4;
+}
+
+.logInButton:not(:disabled) {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.logInButton:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+.logInButton:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.logInButton:not(:disabled):active {
+  box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+
+.logInButton:disabled {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
