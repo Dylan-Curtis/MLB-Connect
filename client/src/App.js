@@ -34,7 +34,7 @@ console.log(user)
       <NavBar user={user}/>
       <header className="App-header">    
         <Routes>
-           <Route path="/" element={<Dashboard/> } />
+           <Route path="/" element={<Dashboard user={user}/> } />
            <Route path="/signup" element= {<SignupForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser}/>} />
            <Route path="/login" element= {<LoginForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser}/>} />            
 

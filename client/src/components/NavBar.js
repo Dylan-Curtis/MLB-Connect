@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-// import {FaBars, FaTimes } from 'react-icons/fa'
+import {FaBars, FaTimes } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
@@ -30,10 +30,8 @@ const Navbar = ({user, setUser}) => {
   }
 
     return (
-        <header>
-            <h3 
-            onClick={() =>  navigate('/')}
-            >MLB Connect</h3>
+        <header class="navBar">
+            <h3 onClick={() =>  navigate('/')}>MLB Connect</h3>
             <nav ref={navRef}>
             { user ? <h1 className= "userInfoHeader">Hello, {user.name}</h1>: <div><Link to="login" ><button className = "logInButton">Login</button></Link> <Link to="signup"><button className = "signupButton">Sign Up</button></Link> </div>}
 
@@ -42,11 +40,12 @@ const Navbar = ({user, setUser}) => {
                 <a href='/stats' onClick={logout}>Logout</a>  
                 
                 <button className='nav-btn nav-close-btn' onClick={showNavbar}>
-                    {/* <FaTimes /> */}
+                <FaTimes />
                 </button>
             </nav>
             <button className='nav-btn' onClick={showNavbar}>
-                {/* <FaBars /> */}
+                <FaBars />
+               
             </button>
         </header>
     );

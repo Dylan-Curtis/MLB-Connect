@@ -59,7 +59,7 @@ function LoginForm({ onLogin, setErrors, errors }) {
                 ))}
                 
                 <button type="submit" class="submit">Submit</button>
-                <div class="subtitle">Don't Have an Account?<Link to="/signup"> Sign Up!</Link></div>
+                <div class="subtitle">Don't Have an Account?<Link class= 'link' to="/signup"> Sign Up!</Link></div>
             </form>
             </>
           );
