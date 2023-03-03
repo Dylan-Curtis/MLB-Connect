@@ -15,9 +15,17 @@ function GameContainer(){
     const [cellNine, setCellNine] = useState("");
 
     const [game, setGame] = useState({});
-function handleSubmit (){
-console.log("submit");
-}
+
+    const [team1Players, setTeam1Players] = useState({});
+    const [team2Players, setTeam2Players] = useState({});
+    const [team3Players, setTeam3Players] = useState({});
+
+    const [team4Players, setTeam4Players] = useState({});
+    const [team5Players, setTeam5Players] = useState({});
+    const [team6Players, setTeam6Players] = useState({});
+// function handleSubmit (){
+// console.log("submit");
+// }
 
   useEffect(() => {
     async function fetchGame() {
@@ -36,6 +44,24 @@ if(Object.keys(game).length === 0 ){
   fetchGame()}
 
 },[game])
+
+useEffect(() => {
+  async function fetchPlayers() {
+    const team1Id = gae 
+    const response = await fetch(`/games/${:today}`);
+    const data = await response.json();
+    console.log(data)      
+    setGame(data);
+  } 
+
+// setErrors(error.error)
+
+
+if(Object.keys(game).length === 0 ){
+  fetchPlayers()}
+
+},[game])
+
 
 
 if (Object.keys(game).length === 0) return <div>Loading</div>
