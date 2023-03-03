@@ -69,7 +69,7 @@ function SignupForm({ setUser, setErrors }) {
             />     
            
             <button type="submit" class="submit" >Submit</button>
-            <div class="subtitle">Have An Account Already? <Link to="/login"> Log In!</Link></div>
+            <div class="subtitle">Have An Account Already? <Link class= 'link' to="/login"> Log In!</Link></div>
         </form>
             
             )

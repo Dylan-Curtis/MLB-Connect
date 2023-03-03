@@ -1,4 +1,6 @@
 import {useState, useEffect} from 'react'
+import Timer from './Timer'
+
 function GameContainer(){
     const [cellOne, setCellOne] = useState("");
     const [cellTwo, setCellTwo] = useState("");
@@ -17,20 +19,19 @@ function handleSubmit (){
 console.log("submit");
 }
 
-useEffect(()=> {
-  const fetchGame = async () =>{        
-    const response = await fetch('games/1')
-    if (response.ok){
-    const game = await response.json()     
-    setGame(game)
-  }
-else{
-const error = response.json()
-console.log(error.error)
-console.log(game)
+  useEffect(() => {
+    async function fetchGame() {
+      const today = new Date().toISOString().slice(0, 10);
+      console.log(today)  
+      const response = await fetch(`/games/${today}`);
+      const data = await response.json();
+      console.log(data)      
+      setGame(data);
+    } 
+
 // setErrors(error.error)
-}
-}
+
+
 if(Object.keys(game).length === 0 ){
   fetchGame()}
 
@@ -42,11 +43,12 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
  return (
           <>        
             <form onSubmit={handleSubmit} class= "game-form">    
-           <div> 
-            <img class='img' src={game.team1.logo} alt={game.team1.name}></img>
+           <span> 
+                  <Timer/>
+                  <img class='img' src={game.team1.logo} alt={game.team1.name}></img>
                   <img class='img' src={game.team2.logo} alt={game.team2.name}></img>
                   <img class='img' src={game.team3.logo} alt={game.team3.name}></img>   
-                  </div>                   
+           </span>                   
                 <div>                  
                   <img class='img' src={game.team4.logo} alt={game.team4.name}></img>
                 <input
