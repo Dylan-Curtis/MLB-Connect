@@ -17,12 +17,12 @@ function GameContainer(){
     const [game, setGame] = useState({});
 
     const [team1Players, setTeam1Players] = useState({});
-    const [team2Players, setTeam2Players] = useState({});
-    const [team3Players, setTeam3Players] = useState({});
+    // const [team2Players, setTeam2Players] = useState({});
+    // const [team3Players, setTeam3Players] = useState({});
 
-    const [team4Players, setTeam4Players] = useState({});
-    const [team5Players, setTeam5Players] = useState({});
-    const [team6Players, setTeam6Players] = useState({});
+    // const [team4Players, setTeam4Players] = useState({});
+    // const [team5Players, setTeam5Players] = useState({});
+    // const [team6Players, setTeam6Players] = useState({});
 // function handleSubmit (){
 // console.log("submit");
 // }
@@ -30,10 +30,11 @@ function GameContainer(){
   useEffect(() => {
     async function fetchGame() {
       const today = new Date().toISOString().slice(0, 10);
-      console.log(today)  
+      debugger
+      // console.log(today)  
       const response = await fetch(`/games/${today}`);
       const data = await response.json();
-      console.log(data)      
+      // console.log(data)      
       setGame(data);
     } 
 
@@ -46,19 +47,21 @@ if(Object.keys(game).length === 0 ){
 },[game])
 
 useEffect(() => {
-  async function fetchPlayers() {
-    const team1Id = gae 
-    const response = await fetch(`/games/${:today}`);
-    const data = await response.json();
-    console.log(data)      
-    setGame(data);
+  async function fetchTeam1Players() {    
+    // const team1Id = game["team1"]["id"]
+    // console.log(team1Id)
+    const response = await fetch(`/teams/${1}`);
+    const players = await response.json();
+    console.log(players)      
+    setTeam1Players(players);
+    console.log(team1Players)
   } 
 
 // setErrors(error.error)
 
 
-if(Object.keys(game).length === 0 ){
-  fetchPlayers()}
+if(Object.keys(team1Players).length === 0 && Object.keys(game).length !== 0){
+  fetchTeam1Players()}
 
 },[game])
 
@@ -67,8 +70,9 @@ if(Object.keys(game).length === 0 ){
 if (Object.keys(game).length === 0) return <div>Loading</div>
 
  return (
-          <>        
-            <form onSubmit={handleSubmit} class= "game-form">    
+          <>   
+              {/* add "done button" */}
+            <form  class= "game-form">    
            <span> 
                   <Timer/>
                   <img class='img' src={game.team1.logo} alt={game.team1.name}></img>

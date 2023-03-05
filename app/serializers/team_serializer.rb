@@ -1,3 +1,3 @@
 class TeamSerializer < ActiveModel::Serializer
-  attributes :id, :id, :logo
+  attributes :id, :team_id, :logo
 end

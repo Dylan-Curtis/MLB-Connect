@@ -74,7 +74,7 @@ Team.create(team_id: 141, logo:'https://content.sportslogos.net/logos/53/78/full
 Team.create(team_id: 139, logo:'https://1000logos.net/wp-content/uploads/2018/05/Tampa_Bay_Rays-Logo.png', name:'Rays')
 
 # Royals
-Team.create(team_id: 118, logo:'https://i.pinimg.com/originals/33/97/63/33976338060f9742b68a4ed7611d34a9.gif', name:'Royals')
+Team.create(team_id: 118, logo:'https://content.sportslogos.net/logos/53/62/full/dh3hfajrrgstm3e1lo2c58sls.gif', name:'Royals')
 
 # Tigers
 Team.create(team_id: 116, logo:'https://i.pinimg.com/originals/33/97/63/33976338060f9742b68a4ed7611d34a9.gif', name:'Tigers')
@@ -105,13 +105,15 @@ Team.create(team_id: 136, logo:'https://i.pinimg.com/originals/b6/e0/19/b6e019b0
 
 puts 'creating players'
 
-team_ids = [121,  120, 146, 143, 144, 134, 113, 158, 138, 112, 135, 119, 109, 115, 137, 147, 111, 110, 141, 139, 118, 116, 114, 145, 142, 133, 117, 140, 108, 136]
+team_ids = [121  
+  # ,120, 146, 143, 144, 134, 113, 158, 138, 112, 135, 119, 109, 115, 137, 147, 111, 110, 141, 139, 118, 116, 114, 145, 142, 133, 117, 140, 108, 136
+  ]
 
 def get_data_from_api(team_ids)
   team_ids.each do |id|
     puts id
-    url = URI("https://mlb-data.p.rapidapi.com/json/named.roster_team_alltime.bam?start_season='2021'&team_id=#{id}&end_season='2022'&sort_order=name_asc")
-    
+    url = URI("https://mlb-data.p.rapidapi.com/json/named.roster_team_alltime.bam?start_season='1970'&team_id=#{id}&end_season='2022'&sort_order=name_asc")
+     
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -139,17 +141,26 @@ puts 'creating user'
 User.create(name: 'Dylan', email: "dcurtisj@gmail.com", password:"password")
 
 puts 'creating games'
-
+dates = [Date.new(2023,03,1), '2023-03-02', '2023-03-03', '2023-03-04', '2023-03-05', '2023-03-06', '2023-03-07', '2023-03-08', '2023-03-09', '2023-03-10', '2023-03-11', '2023-03-12', '2023-03-13', '2023-03-14', '2023-03-15']
 15.times {
-  team_ids = Team.pluck(:team_id).shuffle.uniq.take(6) 
-   Game.create!(  
-  team1: Team.find_by_team_id( team_ids[0]),
-  team2: Team.find_by_team_id( team_ids[1]),
-  team3: Team.find_by_team_id( team_ids[2]),
-  team4: Team.find_by_team_id( team_ids[3]), 
-  team5: Team.find_by_team_id( team_ids[4]),
-  team6: Team.find_by_team_id( team_ids[5]), 
-   )}
+ puts"createing a game"
+   Game.create!( 
+      date: dates[0])
+       team_ids = Team.pluck(:id).shuffle.uniq.take(6) 
+       puts team_ids
+       game_id = Game.order("created_at").last.id
+       
+      TeamGame.create!(team_id: team_ids[0], game_id:game_id)
+      TeamGame.create!(team_id: team_ids[1], game_id:game_id)
+      TeamGame.create!(team_id: team_ids[2], game_id:game_id)
+      TeamGame.create!(team_id: team_ids[3], game_id:game_id)
+      TeamGame.create!(team_id: team_ids[4], game_id:game_id)
+      TeamGame.create!(team_id: team_ids[5], game_id:game_id)
+      
+   dates.shift
+  }
+
+  
 
   puts 'creating scores'
   10.times {Score.create(

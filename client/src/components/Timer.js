@@ -13,6 +13,7 @@ function Timer() {
         setMinutes(minutes - 1);
       } else {
         clearInterval(interval);
+        // post fetch call
       }
     }, 1000);
     return () => clearInterval(interval);

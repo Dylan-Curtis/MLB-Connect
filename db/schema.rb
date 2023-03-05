@@ -10,24 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_24_210011) do
+ActiveRecord::Schema.define(version: 2023_03_05_191640) do
 
   create_table "games", force: :cascade do |t|
-    t.integer "team1_id", null: false
-    t.integer "team2_id", null: false
-    t.integer "team3_id", null: false
-    t.integer "team4_id", null: false
-    t.integer "team5_id", null: false
-    t.integer "team6_id", null: false
-    t.datetime "game_time"
+    t.string "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["team1_id"], name: "index_games_on_team1_id"
-    t.index ["team2_id"], name: "index_games_on_team2_id"
-    t.index ["team3_id"], name: "index_games_on_team3_id"
-    t.index ["team4_id"], name: "index_games_on_team4_id"
-    t.index ["team5_id"], name: "index_games_on_team5_id"
-    t.index ["team6_id"], name: "index_games_on_team6_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -48,6 +36,15 @@ ActiveRecord::Schema.define(version: 2023_02_24_210011) do
     t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
+  create_table "team_games", force: :cascade do |t|
+    t.integer "game_id", null: false
+    t.integer "team_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_team_games_on_game_id"
+    t.index ["team_id"], name: "index_team_games_on_team_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.integer "team_id"
     t.string "name"
@@ -64,13 +61,9 @@ ActiveRecord::Schema.define(version: 2023_02_24_210011) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "games", "teams", column: "team1_id"
-  add_foreign_key "games", "teams", column: "team2_id"
-  add_foreign_key "games", "teams", column: "team3_id"
-  add_foreign_key "games", "teams", column: "team4_id"
-  add_foreign_key "games", "teams", column: "team5_id"
-  add_foreign_key "games", "teams", column: "team6_id"
   add_foreign_key "players", "teams"
   add_foreign_key "scores", "games"
   add_foreign_key "scores", "users"
+  add_foreign_key "team_games", "games"
+  add_foreign_key "team_games", "teams"
 end
