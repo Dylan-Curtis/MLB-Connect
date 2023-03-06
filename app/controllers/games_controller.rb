@@ -5,7 +5,7 @@ class GamesController < ApplicationController
     end
 
     def show       
-        render json: @game, status: :ok
+        render json: @game.team_games, status: :ok
     end  
 
     private 

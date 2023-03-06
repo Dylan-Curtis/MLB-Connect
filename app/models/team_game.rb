@@ -1,5 +1,4 @@
 class TeamGame < ApplicationRecord
-  has_many :games
-  has_many :teams
-
+  belongs_to :game
+  belongs_to :team
 end

@@ -9,6 +9,7 @@ User.destroy_all
 Player.destroy_all
 Team.destroy_all
 Game.destroy_all
+TeamGame.destroy_all
 Score.destroy_all
 
 puts 'creating teams'
@@ -148,14 +149,14 @@ dates = [Date.new(2023,03,1), '2023-03-02', '2023-03-03', '2023-03-04', '2023-03
       date: dates[0])
        team_ids = Team.pluck(:id).shuffle.uniq.take(6) 
        puts team_ids
-       game_id = Game.order("created_at").last.id
-       
-      TeamGame.create!(team_id: team_ids[0], game_id:game_id)
-      TeamGame.create!(team_id: team_ids[1], game_id:game_id)
-      TeamGame.create!(team_id: team_ids[2], game_id:game_id)
-      TeamGame.create!(team_id: team_ids[3], game_id:game_id)
-      TeamGame.create!(team_id: team_ids[4], game_id:game_id)
-      TeamGame.create!(team_id: team_ids[5], game_id:game_id)
+       game_id = Game.order("created_at").last
+      #  byebug
+      TeamGame.create!(team: Team.find_by_id(team_ids[0]), game:game_id)
+      TeamGame.create!(team: Team.find_by_id(team_ids[1]), game:game_id)
+      TeamGame.create!(team: Team.find_by_id(team_ids[2]), game:game_id)
+      TeamGame.create!(team: Team.find_by_id(team_ids[3]), game:game_id)
+      TeamGame.create!(team: Team.find_by_id(team_ids[4]), game:game_id)
+      TeamGame.create!(team: Team.find_by_id(team_ids[5]), game:game_id)
       
    dates.shift
   }
