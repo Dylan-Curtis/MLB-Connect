@@ -13,7 +13,7 @@ code {
 }
 
 .navBar{
-  /* border: 1px solid white; */
+  
   background-color: #36454F;
 }
 
@@ -30,6 +30,14 @@ code {
   --secondaryColor: red;
   --textColor: #eee;
 }
+
+
+
+
+
+
+  
+
 
 header{
   display: flex;
@@ -57,10 +65,10 @@ header .nav-btn{
   background: transparent;
   border: none;
   outline: none;
-  /* color: var(--textColor); */
-  /* visibility: hidden; */
-  /* opacity: 0; */
-  /* font-size: 1.8rem; */
+  color: var(--textColor);
+   visibility: hidden; 
+   opacity: 0; 
+   font-size: 1.8rem; 
 }
 
 @media only screen and (max-width: 1024px){
@@ -100,6 +108,7 @@ header .nav-btn{
   }
 
 }
+
 .input-container {
   height: 50px;
   position: relative;
@@ -172,8 +181,61 @@ header .nav-btn{
   /* width: 100%;  */
   width: 10vw;
   margin-bottom: 1vw;
-  margin-left: 20px;
+  margin-left: 20px;  
 }
+
+.cell-correct{
+  height: 50px;
+  position: relative;
+  width: 100%;
+  
+  border-radius: 12px;
+  border: 0;
+  box-sizing: content-box;
+
+  color: #7D7B7B;
+  font-size: 18px;   
+  /* width: 100%;  */
+  width: 10vw;
+  margin-bottom: 1vw;
+  margin-left: 20px;  
+  background-color: #6CA965
+}
+.cell-incorrect{
+  height: 50px;
+  position: relative;
+  width: 100%;
+
+  border-radius: 12px;
+  border: 0;
+  box-sizing: content-box;
+
+  color: #7D7B7B;
+  font-size: 18px;   
+  /* width: 100%;  */
+  width: 10vw;
+  margin-bottom: 1vw;
+  margin-left: 20px;  
+  background-color: #C94600
+}
+.cell-close{
+  height: 50px;
+  position: relative;
+  width: 100%;
+ 
+  border-radius: 12px;
+  border: 0;
+  box-sizing: content-box;
+
+  color: #7D7B7B;
+  font-size: 18px;   
+  /* width: 100%;  */
+  width: 10vw;
+  margin-bottom: 1vw;
+  margin-left: 20px;  
+  background-color: #FFC425
+}
+
 .Timer{  
   height: 50px;
   position: relative;

@@ -106,14 +106,12 @@ Team.create(team_id: 136, logo:'https://i.pinimg.com/originals/b6/e0/19/b6e019b0
 
 puts 'creating players'
 
-team_ids = [121  
-  # ,120, 146, 143, 144, 134, 113, 158, 138, 112, 135, 119, 109, 115, 137, 147, 111, 110, 141, 139, 118, 116, 114, 145, 142, 133, 117, 140, 108, 136
-  ]
+team_ids = [121 ,120, 146, 143, 144, 134, 113, 158, 138, 112, 135, 119, 109, 115, 137, 147, 111, 110, 141, 139, 118, 116, 114, 145, 142, 133, 117, 140, 108, 136 ]
 
 def get_data_from_api(team_ids)
   team_ids.each do |id|
     puts id
-    url = URI("https://mlb-data.p.rapidapi.com/json/named.roster_team_alltime.bam?start_season='1970'&team_id=#{id}&end_season='2022'&sort_order=name_asc")
+    url = URI("https://mlb-data.p.rapidapi.com/json/named.roster_team_alltime.bam?start_season='2000'&team_id=#{id}&end_season='2022'&sort_order=name_asc")
      
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true

@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+// import { FaCheck } from 'react-icons/fa';
 import Timer from './Timer'
 
 function GameContainer(){
@@ -12,7 +13,7 @@ function GameContainer(){
 
     const [cellSeven, setCellSeven] = useState("");
     const [cellEight, setCellEight] = useState("");
-    const [cellNine, setCellNine] = useState("");
+    const [cellNine, setCellNine] = useState("");   
 
     const [game, setGame] = useState({});
 
@@ -22,11 +23,25 @@ function GameContainer(){
 
     const [team4Players, setTeam4Players] = useState([]);
     const [team5Players, setTeam5Players] = useState([]);
-    const [team6Players, setTeam6Players] = useState([]);
-// function handleSubmit (){
-// console.log("submit");
-// }
+    const [team6Players, setTeam6Players] = useState([]); 
 
+    function checkCell(answer, topTeam, sideTeam, cell) {  
+      if (topTeam.some(player => player.name === answer) && sideTeam.some(player => player.name === answer)) {
+        cell.disabled = true;
+        cell.classList.add('cell-correct');
+        
+      } else if (topTeam.some(player => player.name === answer) || sideTeam.some(player => player.name === answer)) {
+        cell.classList.add('cell-close');
+      } else {
+        cell.classList.add('cell-incorrect');
+      }
+    }
+
+function resetCell(e){
+  
+  e.classList.remove('cell-close') 
+  e.classList.remove('cell-incorrect')
+}
   useEffect(() => {
     async function fetchGame() {
       const today = new Date().toISOString().slice(0, 10);
@@ -52,7 +67,7 @@ useEffect(() => {
     // console.log(team1Id)
     const response = await fetch(`/teams/${game[0].team.id}`);
     const players = await response.json();
-    // console.log(players)      
+    console.log(players)      
     setTeam1Players(players);
     
   } 
@@ -90,7 +105,8 @@ useEffect(() => {
   async function fetchTeam4Players() {   
     const response = await fetch(`/teams/${game[3].team.id}`);
     const players = await response.json();
-    setTeam4Players(players);   
+    setTeam4Players(players); 
+    console.log(players)  
   } 
 
 if(Object.keys(team4Players).length === 0 && Object.keys(game).length !== 0){
@@ -146,9 +162,12 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   type="text"
                   id="cellOne"
                   autoComplete="off"
-                  class="cell"
+                  className="cell"
                   value={cellOne}
-                  onChange={(e) => setCellOne(e.target.value)}
+                  onChange={(e) => setCellOne(e.target.value)}                  
+                  onBlur={(e) =>{checkCell(e.target.value, team1Players, team4Players, e.target)}}
+                  onFocus={(e) =>{resetCell(e.target)}}
+                 
                 />  
 
                 <input
@@ -157,7 +176,10 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   autoComplete="off"
                   class="cell"
                   value={cellTwo}
-                  onChange={(e) => setCellTwo(e.target.value)}
+                  onChange={(e) => setCellTwo(e.target.value)}                  
+                  onBlur={(e) =>{checkCell(e.target.value, team2Players, team4Players, e.target)}}
+                  onFocus={(e) =>{resetCell(e.target)}}
+                 
                 />  
                 
                 <input
@@ -166,7 +188,10 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   autoComplete="off"
                   class="cell"
                   value={cellThree}
-                  onChange={(e) => setCellThree(e.target.value)}
+                  onChange={(e) => setCellThree(e.target.value)}                 
+                  onBlur={(e) =>{checkCell(e.target.value, team3Players, team4Players, e.target)}}
+                  onFocus={(e) =>{resetCell(e.target)}}
+                  
                 />  
               </div>
               
@@ -179,6 +204,9 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   class="cell"
                   value={cellFour}
                   onChange={(e) => setCellFour(e.target.value)}
+                  onBlur={(e) =>{checkCell(e.target.value, team1Players, team5Players, e.target)}}
+                  onFocus={(e) =>{resetCell(e.target)}}
+                  
                 /> 
                 <input
                   type="text"
@@ -187,6 +215,9 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   class="cell"
                   value={cellFive}
                   onChange={(e) => setCellFive(e.target.value)}
+                  onBlur={(e) =>{checkCell(e.target.value, team2Players, team5Players, e.target)}}
+                  onFocus={(e) =>{resetCell(e.target)}}
+                 
                 /> 
                  <input
                   type="text"
@@ -195,6 +226,9 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   class="cell"
                   value={cellSix}
                   onChange={(e) => setCellSix(e.target.value)}
+                  onBlur={(e) =>{checkCell(e.target.value, team3Players, team5Players, e.target)}}
+                  onFocus={(e) =>{resetCell(e.target)}}
+                 
                 /> </div>
                 <img class='img' src={game[5].team.logo} alt={game[5].team.name}></img>                
                  <input
@@ -204,6 +238,9 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   class="cell"
                   value={cellSeven}
                   onChange={(e) => setCellSeven(e.target.value)}
+                  onBlur={(e) =>{checkCell(e.target.value, team1Players, team6Players, e.target)}}
+                  onFocus={(e) =>{resetCell(e.target)}}
+                  
                 /> 
                 <input
                   type="text"
@@ -212,6 +249,9 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   class="cell"
                   value={cellEight}
                   onChange={(e) => setCellEight(e.target.value)}
+                  onBlur={(e) =>{checkCell(e.target.value, team2Players, team6Players, e.target)}}
+                  onFocus={(e) =>{resetCell(e.target)}}
+                  
                 /> 
                 <input
                   type="text"
@@ -220,6 +260,9 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   class="cell"
                   value={cellNine}
                   onChange={(e) => setCellNine(e.target.value)}
+                  onBlur={(e) =>{checkCell(e.target.value, team3Players, team6Players, e.target)}}
+                  onFocus={(e) =>{resetCell(e.target)}}
+                  
                 /> 
             </form>
             </>
