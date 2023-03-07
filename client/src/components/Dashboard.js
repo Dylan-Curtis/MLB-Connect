@@ -7,7 +7,7 @@ function Dashboard({user,setUser,errors,setErrors}) {
 
     return(
         <div>
-          { user ? <GameContainer/>:
+          { user ? <GameContainer user={user}/>:
           <SignupForm setUser={setUser} errors = {errors} setErrors={setErrors} user={user} />
           }
         </div>

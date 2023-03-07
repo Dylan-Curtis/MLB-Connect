@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/games/:date', to: 'games#show', as: 'date_game'
   post "/login", to: "sessions#login"
   post "/signup", to: "users#create"
+  post "/newstat", to: "scores#create"
   delete "/logout", to: "sessions#logout"
   get "/authorized_user", to: "users#show" 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? } 

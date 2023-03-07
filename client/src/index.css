@@ -143,40 +143,42 @@ header .nav-btn{
   /* box-sizing: border-box; */
   /* box-sizing: content-box; */
   height: relative;
-  padding: 20px;
+  /* padding: 20px; */
   width: auto;
   justify-self: center;  
-  margin-left: auto;
-  margin-right: auto;  
-  
+  /* margin-left: auto;
+  margin-right: auto;   */
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  /* grid-template-rows: repeat(4, 1fr);   */
 }
 
 .img{
   height: 50px;
-  position: relative;
+  /* position: relative; */
   width: 100%;
   background-color: #FFFFFF;
   border-radius: 12px;
-  border: 0;
-    box-sizing: content-box;
+  
+    /* box-sizing: content-box; */
   color: #7D7B7B;
   font-size: 18px;   
-  /* width: 100%;  */
+  
   width: 10vw;
-  /* margin-bottom: 1vw; */
+  
   margin-left: 20px;
 }
 
 .cell {
   height: 50px;
-  position: relative;
+  /* position: relative; */
   width: 100%;
   background-color: #FFFFFF;
   border-radius: 12px;
   border: 0;
   box-sizing: content-box;
 
-  color: #7D7B7B;
+  color: #000;
   font-size: 18px;   
   /* width: 100%;  */
   width: 10vw;
@@ -193,7 +195,7 @@ header .nav-btn{
   border: 0;
   box-sizing: content-box;
 
-  color: #7D7B7B;
+  color: #000;
   font-size: 18px;   
   /* width: 100%;  */
   width: 10vw;
@@ -210,7 +212,7 @@ header .nav-btn{
   border: 0;
   box-sizing: content-box;
 
-  color: #7D7B7B;
+  color: #000;
   font-size: 18px;   
   /* width: 100%;  */
   width: 10vw;
@@ -227,7 +229,7 @@ header .nav-btn{
   border: 0;
   box-sizing: content-box;
 
-  color: #7D7B7B;
+  color: #000;
   font-size: 18px;   
   /* width: 100%;  */
   width: 10vw;
@@ -411,4 +413,34 @@ header .nav-btn{
 
 .signupButton:disabled {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.stats-div{
+  background-color: #36454F;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: auto;
+  padding: 20px;
+  width: auto;
+  justify-self: center;  
+  margin-left: auto;
+  margin-right: auto;   
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  /* grid-template-rows: repeat(2, 1fr);   */
+}
+
+.stat-div{
+  background-color: #808080;
+  border-radius: 20px;
+  
+  height: 100px;
+  padding: 20px;
+  width: 100px;
+  justify-self: center;  
+  margin-left: auto;
+  margin-right: auto;  
+  position: relative;
+  box-sizing: content-box;
+ 
 }

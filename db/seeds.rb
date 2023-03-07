@@ -161,11 +161,11 @@ dates = [Date.new(2023,03,1), '2023-03-02', '2023-03-03', '2023-03-04', '2023-03
 
   
 
-  puts 'creating scores'
-  10.times {Score.create(
-    user: User.all.sample,
-    game: Game.all.sample,
-    time: rand(0.0..5.0)
-    )}
+  # puts 'creating scores'
+  # 10.times {Score.create(
+  #   user: User.all.sample,
+  #   game: Game.all.sample,
+  #   time: rand(0.0..5.0)
+  #   )}
   
     puts 'finished seeding'

@@ -1,8 +1,7 @@
 import {useState, useEffect} from 'react'
-// import { FaCheck } from 'react-icons/fa';
 import Timer from './Timer'
 
-function GameContainer(){
+function GameContainer(user){
     const [cellOne, setCellOne] = useState("");
     const [cellTwo, setCellTwo] = useState("");
     const [cellThree, setCellThree] = useState("");
@@ -25,7 +24,10 @@ function GameContainer(){
     const [team5Players, setTeam5Players] = useState([]);
     const [team6Players, setTeam6Players] = useState([]); 
 
+    const [gameOver, setGameOver] = useState(false);
+
     function checkCell(answer, topTeam, sideTeam, cell) {  
+      if (answer.length > 0) {
       if (topTeam.some(player => player.name === answer) && sideTeam.some(player => player.name === answer)) {
         cell.disabled = true;
         cell.classList.add('cell-correct');
@@ -36,26 +38,20 @@ function GameContainer(){
         cell.classList.add('cell-incorrect');
       }
     }
-
+  }
 function resetCell(e){
-  
   e.classList.remove('cell-close') 
   e.classList.remove('cell-incorrect')
 }
   useEffect(() => {
     async function fetchGame() {
       const today = new Date().toISOString().slice(0, 10);
-    
-      // console.log(today)  
       const response = await fetch(`/games/${today}`);
       const data = await response.json();
-      // console.log(data)      
+      console.log(data)    
       setGame(data);
+      
     } 
-
-// setErrors(error.error)
-
-
 if(Object.keys(game).length === 0 ){
   fetchGame()}
 
@@ -129,9 +125,7 @@ fetchTeam5Players()}
 },[game])
 
 useEffect(() => {
-  async function fetchTeam6Players() {    
-    // const team1Id = game["team1"]["id"]
-    // console.log(team1Id)
+  async function fetchTeam6Players() {
     const response = await fetch(`/teams/${game[5].team.id}`);
     const players = await response.json();
     setTeam6Players(players);   
@@ -143,6 +137,12 @@ fetchTeam6Players()}
 },[game])
 
 
+const correctInputs = document.querySelectorAll(".cell-correct")
+if( correctInputs.length === 9 && !gameOver){  
+  setGameOver(true)
+}
+
+
 
 if (Object.keys(game).length === 0) return <div>Loading</div>
 
@@ -150,15 +150,12 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
           <>   
               {/* add "done button" */}
             <form  class= "game-form">    
-           <span> 
-                  <Timer/>
-                  <img class='img' src={game[0].team.logo} alt={game[0].team.name}></img>
-                  <img class='img' src={game[1].team.logo} alt={game[1].team.name}></img>
-                  <img class='img' src={game[2].team.logo} alt={game[2].team.name}></img>   
-           </span>                   
-                <div>                  
-                  <img class='img' src={game[3].team.logo} alt={game[3].team.name}></img>
-                <input
+           <div><Timer game={game} user={user} gameOver={gameOver} setGameOver={setGameOver}/></div> 
+           <div><img class='img' src={game[0].team.logo} alt={game[0].team.name}></img></div> 
+           <div><img class='img' src={game[1].team.logo} alt={game[1].team.name}></img></div> 
+           <div><img class='img' src={game[2].team.logo} alt={game[2].team.name}></img></div> 
+           <div><img class='img' src={game[3].team.logo} alt={game[3].team.name}></img></div> 
+            <div><input
                   type="text"
                   id="cellOne"
                   autoComplete="off"
@@ -167,10 +164,9 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   onChange={(e) => setCellOne(e.target.value)}                  
                   onBlur={(e) =>{checkCell(e.target.value, team1Players, team4Players, e.target)}}
                   onFocus={(e) =>{resetCell(e.target)}}
-                 
-                />  
+                /> </div>  
 
-                <input
+                <div> <input
                   type="text"
                   id="cellTwo"
                   autoComplete="off"
@@ -180,9 +176,9 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   onBlur={(e) =>{checkCell(e.target.value, team2Players, team4Players, e.target)}}
                   onFocus={(e) =>{resetCell(e.target)}}
                  
-                />  
+                /></div>   
                 
-                <input
+                <div><input
                   type="text"
                   id="cellThree"
                   autoComplete="off"
@@ -191,13 +187,9 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   onChange={(e) => setCellThree(e.target.value)}                 
                   onBlur={(e) =>{checkCell(e.target.value, team3Players, team4Players, e.target)}}
                   onFocus={(e) =>{resetCell(e.target)}}
-                  
-                />  
-              </div>
-              
-              <div>
-              <img class='img' src={game[4].team.logo} alt={game[4].team.name}></img>
-                <input
+                  /> </div>  
+              <div><img class='img' src={game[4].team.logo} alt={game[4].team.name}></img></div>
+              <div><input
                   type="text"
                   id="cellFour"
                   autoComplete="off"
@@ -206,9 +198,8 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   onChange={(e) => setCellFour(e.target.value)}
                   onBlur={(e) =>{checkCell(e.target.value, team1Players, team5Players, e.target)}}
                   onFocus={(e) =>{resetCell(e.target)}}
-                  
-                /> 
-                <input
+                /></div>   
+                <div><input
                   type="text"
                   id="cellFive"
                   autoComplete="off"
@@ -217,9 +208,8 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   onChange={(e) => setCellFive(e.target.value)}
                   onBlur={(e) =>{checkCell(e.target.value, team2Players, team5Players, e.target)}}
                   onFocus={(e) =>{resetCell(e.target)}}
-                 
-                /> 
-                 <input
+                /> </div>   
+                 <div><input
                   type="text"
                   id="cellSix"
                   autoComplete="off"
@@ -228,7 +218,6 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   onChange={(e) => setCellSix(e.target.value)}
                   onBlur={(e) =>{checkCell(e.target.value, team3Players, team5Players, e.target)}}
                   onFocus={(e) =>{resetCell(e.target)}}
-                 
                 /> </div>
                 <img class='img' src={game[5].team.logo} alt={game[5].team.name}></img>                
                  <input

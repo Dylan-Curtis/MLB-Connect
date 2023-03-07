@@ -18,9 +18,25 @@ if(Object.keys(stats).length === 0 ){
 
 },[stats])
 return(
-    <div>
- <Timer/>
-    </div>
+    <span className ="stats-div">
+      <span>
+      <div className ="stat-div">
+        Current Streak
+      </div>
+      <div className ="stat-div">
+        Max Streak
+      </div>
+      </span>
+<span>
+      <div className ="stat-div">
+      Win Percentage
+      </div>
+      <div className ="stat-div">
+      Total Wins
+      </div>
+      </span>
+ 
+    </span>
 )
 }
 export default UserStatPage

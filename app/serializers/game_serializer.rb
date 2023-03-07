@@ -1,4 +1,4 @@
 class GameSerializer < ActiveModel::Serializer
-    attributes :date
+    attributes :date, :id
     
 end
