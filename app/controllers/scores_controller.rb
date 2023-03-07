@@ -18,6 +18,11 @@ class ScoresController < ApplicationController
     #      @user.update(score_params)
     #      render json: @user, status: :ok
     #  end
+
+    def destroy
+        self.destroy_all
+    end
+    
     private 
        def score_params
         params.require(:score).permit(:time, game: [:id, :date], user: [:id, :name, :email])
