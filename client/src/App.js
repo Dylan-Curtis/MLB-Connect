@@ -13,6 +13,7 @@ function App() {
   // const [showNavBar, setShowNavBar] = useState(false)
   const [user, setUser] = useState(null)
   const [errors, setErrors] = useState([]);
+  const [background, setBackground] = useState("App-Header")
  
   useEffect(()=> {
     const fetchUser = async () =>{        
@@ -35,14 +36,14 @@ console.log(user)
   return (
     <div className="App">
       <NavBar user={user} setUser={setUser}/>
-      <header className="App-header">    
+      <header className={background}>    
         <Routes>
-           <Route path="/" element={<Dashboard user={user} setUser={setUser}  errors = {errors} setErrors={setErrors}/> } />
-           <Route path="/signup" element= {<SignupForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser}/>} />
-           <Route path="/login" element= {<LoginForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser}/>} /> 
-           <Route path="/edit-user" element= {<EditUser onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser}/>} /> 
-           <Route path= "/stats" element= {<UserStatPage  errors = {errors} setErrors={setErrors} user={user} />}   />   
-           <Route path= "/game-instructions" element= {<GameInstructions/>} /> 
+           <Route path="/" element={<Dashboard user={user} setUser={setUser}  errors = {errors} setErrors={setErrors} setBackground={setBackground}/> } />
+           <Route path="/signup" element= {<SignupForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser} setBackground={setBackground}/>} />
+           <Route path="/login" element= {<LoginForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser} setBackground={setBackground}/>} /> 
+           <Route path="/edit-user" element= {<EditUser onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser} setBackground={setBackground}/>} /> 
+           <Route path= "/stats" element= {<UserStatPage  errors = {errors} setErrors={setErrors} user={user} setBackground={setBackground} />}   />   
+           <Route path= "/game-instructions" element= {<GameInstructions setBackground={setBackground}/>} />           
         </Routes>
            
       </header>

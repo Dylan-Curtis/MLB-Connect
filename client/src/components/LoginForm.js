@@ -3,10 +3,10 @@ import {useState} from 'react'
 import { useNavigate } from "react-router-dom";
 
 
-function LoginForm({ onLogin, setErrors, errors }) {
+function LoginForm({ onLogin, setErrors, errors, setBackground }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-   
+    setBackground("App-background4")  
     const navigate = useNavigate();
 
     function handleSubmit(e) {

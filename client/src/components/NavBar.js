@@ -35,7 +35,7 @@ const Navbar = ({user, setUser}) => {
             <nav ref={navRef}>
             { user ? <h1 className= "userInfoHeader">Hello, {user.name}</h1>: <div><Link to="login" ><button class = "logInButton">Login</button></Link> <Link to="signup"><button className = "signupButton">Sign Up</button></Link> </div>}
 
-                <a href='/GameInstructions'>How to Play</a>
+                <a href='/game-instructions'>How to Play</a>
                 <a href='/stats'>Stats</a>           
                 {user ? <a href='/stats' onClick={logout}>Logout</a>: ""}  
                 

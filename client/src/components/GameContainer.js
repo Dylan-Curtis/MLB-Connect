@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react'
 import Timer from './Timer'
-import Background1 from './img/Background1.jpg'
+
 
 function GameContainer(user){
+  
     const [cellOne, setCellOne] = useState("");
     const [cellTwo, setCellTwo] = useState("");
     const [cellThree, setCellThree] = useState("");
@@ -28,6 +29,7 @@ function GameContainer(user){
     const [gameOver, setGameOver] = useState(false);
 
     function checkCell(answer, topTeam, sideTeam, cell) {  
+      
       if (answer.length > 0) {
       if (topTeam.some(player => player.name === answer) && sideTeam.some(player => player.name === answer)) {
         cell.disabled = true;
@@ -148,7 +150,7 @@ if( correctInputs.length === 9 && !gameOver){
 if (Object.keys(game).length === 0) return <div>Loading</div>
 
  return (
-          <div style={{ backgroundImage:`url(${Background1})`,backgroundRepeat:"no-repeat" }}>   
+          <div >   
               {/* add "done button" */}
             <form  class= "game-form">    
            <div><Timer game={game} user={user} gameOver={gameOver} setGameOver={setGameOver}/></div> 

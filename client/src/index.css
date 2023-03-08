@@ -5,11 +5,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+    
 }
 
 .navBar{
@@ -22,6 +24,7 @@ code {
   margin: 0;
   box-sizing: border-box;
   font-family: ultra;
+  
 }
 
 :root{
@@ -30,14 +33,6 @@ code {
   --secondaryColor: red;
   --textColor: #eee;
 }
-
-
-
-
-
-
-  
-
 
 header{
   display: flex;
@@ -148,8 +143,14 @@ header .nav-btn{
   
 }
 
+.page-background4 {
+  background-image: url(./components/img/Background4.jpg);
+  background-size: auto;
+  background-position: auto;
+}
+
 .game-form {
-  background-color: #36454F;
+  background-color: transparent;
   border-radius: 20px;
   /* box-sizing: border-box; */
   /* box-sizing: content-box; */
@@ -427,7 +428,7 @@ header .nav-btn{
 }
 
 .stats-div{
-  background-color: #36454F;
+  background-color: transparent;
   border-radius: 20px;
   box-sizing: border-box;
   height: auto;

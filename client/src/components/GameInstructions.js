@@ -1,6 +1,7 @@
 import React from "react";
 
-function GameInstructions() {
+function GameInstructions({setBackground}) {
+  setBackground("App-background6") 
   return (
     <div>
       <h2>How to Play the Game</h2>

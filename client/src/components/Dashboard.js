@@ -2,8 +2,8 @@
 import GameContainer from './GameContainer'
 import SignupForm from './SignupForm'
 
-function Dashboard({user,setUser,errors,setErrors}) { 
- 
+function Dashboard({user,setUser,errors,setErrors, setBackground}) { 
+  setBackground("App-background5")  
 
     return(
         <div>
