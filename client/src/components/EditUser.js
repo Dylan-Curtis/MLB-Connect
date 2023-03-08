@@ -1,10 +1,12 @@
 import { useState } from "react";
-function EditUser({ onLogin, setErrors, user }) { 
+function EditUser({ onLogin, setErrors, user,setBackground }) { 
+
     const [name, setName] = useState("");
-
+    const [email, setEmail] = useState("");
     
-
+    setBackground("App-background2")  
     function handleSubmit(e) {
+      
         e.preventDefault();        
         fetch(`/users/${user.id}`, {
           method: "PATCH",
@@ -12,7 +14,8 @@ function EditUser({ onLogin, setErrors, user }) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            name                     
+            name, 
+            email                    
           }),
         }).then((r) => {
          
@@ -28,8 +31,7 @@ function EditUser({ onLogin, setErrors, user }) {
       }
 
     return (
-        <form onSubmit={handleSubmit} className="form">          
-            <label htmlFor="name">Change Name</label>
+        <form onSubmit={handleSubmit} className="form">    
             <input
               class="input-container"
               type="text"
@@ -38,7 +40,16 @@ function EditUser({ onLogin, setErrors, user }) {
               placeholder="New Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-            />          
+            />   
+            <input
+              class="input-container"
+              type="text"
+              id="email"
+              autoComplete="off"
+              placeholder="New Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />         
            
             <button class="submit" type="submit">Submit</button>
         </form>

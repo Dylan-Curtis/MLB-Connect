@@ -34,7 +34,7 @@ function GameContainer(user){
       if (topTeam.some(player => player.name === answer) && sideTeam.some(player => player.name === answer)) {
         cell.disabled = true;
         cell.classList.add('cell-correct');
-        
+        endGame()
       } else if (topTeam.some(player => player.name === answer) || sideTeam.some(player => player.name === answer)) {
         cell.classList.add('cell-close');
       } else {
@@ -139,7 +139,7 @@ fetchTeam6Players()}
 
 },[game])
 
-
+function endGame (){}
 const correctInputs = document.querySelectorAll(".cell-correct")
 if( correctInputs.length === 9 && !gameOver){  
   setGameOver(true)

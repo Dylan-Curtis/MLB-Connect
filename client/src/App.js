@@ -8,6 +8,7 @@ import LoginForm from './components/LoginForm';
 import UserStatPage from './components/UserStatPage'
 import GameInstructions from './components/GameInstructions'
 import EditUser from './components/EditUser'
+import ResetStats from './components/ResetStats';
 
 function App() {
   // const [showNavBar, setShowNavBar] = useState(false)
@@ -43,7 +44,8 @@ console.log(user)
            <Route path="/login" element= {<LoginForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser} setBackground={setBackground}/>} /> 
            <Route path="/edit-user" element= {<EditUser onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser} setBackground={setBackground}/>} /> 
            <Route path= "/stats" element= {<UserStatPage  errors = {errors} setErrors={setErrors} user={user} setBackground={setBackground} />}   />   
-           <Route path= "/game-instructions" element= {<GameInstructions setBackground={setBackground}/>} />           
+           <Route path= "/game-instructions" element= {<GameInstructions setBackground={setBackground}/>} />      
+           <Route path= "/reset-stats" element= {<ResetStats setBackground={setBackground}/>} />        
         </Routes>
            
       </header>

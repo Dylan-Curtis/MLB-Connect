@@ -20,7 +20,8 @@ const Navbar = ({user, setUser}) => {
   })
   .then(r => {
       if(r.status === 204){
-          setUser(null)}
+          setUser(null)
+          navigate('/')}
           else{
    const error = r.json()
    console.log(error.error)

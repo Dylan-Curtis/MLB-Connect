@@ -25,7 +25,7 @@ function UserStatPage({user, setBackground}) {
           <div>
             <h3>{user.name}</h3>
             <Link to='/edit-user'><h3>Edit Account </h3></Link>
-            <h3 href='/game-instructions'>Reset Stats</h3>
+            <Link to='/reset-stats'><h3>Reset Stats</h3></Link>
           </div> 
           : ""
         }
