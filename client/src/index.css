@@ -55,6 +55,17 @@ nav a{
   text-decoration: none;
 }
 
+header h3{
+  margin: 0 2rem;
+  color: var(--textColor);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header h3:hover{
+  color: var(--secondaryColor)
+}
+
 nav a:hover{
   color: var(--secondaryColor)
 }

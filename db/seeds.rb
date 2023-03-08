@@ -117,7 +117,7 @@ def get_data_from_api(team_ids)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     
-    request = Net::HTTP::Get.new(url)
+    request = Net::HTTP::Get.new(url)S
     request["X-RapidAPI-Key"] = '38368f629fmsh117a78cdc45ef42p1e9694jsn8c07e52f4c3c'
     request["X-RapidAPI-Host"] = 'mlb-data.p.rapidapi.com'
     

@@ -7,6 +7,7 @@ import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import UserStatPage from './components/UserStatPage'
 import GameInstructions from './components/GameInstructions'
+import EditUser from './components/EditUser'
 
 function App() {
   // const [showNavBar, setShowNavBar] = useState(false)
@@ -39,8 +40,9 @@ console.log(user)
            <Route path="/" element={<Dashboard user={user} setUser={setUser}  errors = {errors} setErrors={setErrors}/> } />
            <Route path="/signup" element= {<SignupForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser}/>} />
            <Route path="/login" element= {<LoginForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser}/>} /> 
+           <Route path="/edit-user" element= {<EditUser onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser}/>} /> 
            <Route path= "/stats" element= {<UserStatPage  errors = {errors} setErrors={setErrors} user={user} />}   />   
-           <Route path= "/GameInstructions" element= {<GameInstructions/>} /> 
+           <Route path= "/game-instructions" element= {<GameInstructions/>} /> 
         </Routes>
            
       </header>

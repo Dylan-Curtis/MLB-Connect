@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import Timer from './Timer'
+import Background1 from './img/Background1.jpg'
 
 function GameContainer(user){
     const [cellOne, setCellOne] = useState("");
@@ -147,7 +148,7 @@ if( correctInputs.length === 9 && !gameOver){
 if (Object.keys(game).length === 0) return <div>Loading</div>
 
  return (
-          <>   
+          <div style={{ backgroundImage:`url(${Background1})`,backgroundRepeat:"no-repeat" }}>   
               {/* add "done button" */}
             <form  class= "game-form">    
            <div><Timer game={game} user={user} gameOver={gameOver} setGameOver={setGameOver}/></div> 
@@ -254,7 +255,7 @@ if (Object.keys(game).length === 0) return <div>Loading</div>
                   
                 /> 
             </form>
-            </>
+            </div>
           );
         }        
         export default GameContainer;

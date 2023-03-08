@@ -1,7 +1,12 @@
 class ScoresController < ApplicationController
-    def index
-        render json: @user.scores.all, status: :ok
-    end 
+    def index        
+        @scores = @user.scores
+        total_wins =@scores.total_wins
+        win_percentage = @scores.win_percentage
+    
+        render json: 
+        { scores: @scores, total_wins: total_wins, win_percentage: win_percentage }, status: :ok
+      end
 
     def create
         user = User.find_by(id: params[:user][:id])
@@ -18,13 +23,9 @@ class ScoresController < ApplicationController
     #      @user.update(score_params)
     #      render json: @user, status: :ok
     #  end
-
-    def destroy
-        self.destroy_all
-    end
-    
     private 
        def score_params
         params.require(:score).permit(:time, game: [:id, :date], user: [:id, :name, :email])
      end
+     
 end
