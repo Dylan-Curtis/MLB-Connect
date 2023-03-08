@@ -1,5 +1,5 @@
 import { useState } from "react";
-function ChangeName({ onLogin, setErrors, user }) { 
+function EditUser({ onLogin, setErrors, user }) { 
     const [name, setName] = useState("");
 
     
@@ -46,4 +46,4 @@ function ChangeName({ onLogin, setErrors, user }) {
             )
 }
 
- export default ChangeName
+ export default EditUser

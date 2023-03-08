@@ -428,7 +428,7 @@ header .nav-btn{
 }
 
 .stats-div{
-  background-color: transparent;
+  background-color:  #36454F;
   border-radius: 20px;
   box-sizing: border-box;
   height: auto;
@@ -440,6 +440,21 @@ header .nav-btn{
   display: grid;
   grid-template-columns: repeat(2,1fr);
   /* grid-template-rows: repeat(2, 1fr);   */
+}
+
+.user-div{
+  background-color:  #36454F;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: auto;
+  padding: 20px;
+  width: auto;
+  justify-self: center;   
+  margin-left: auto;
+  margin-right: auto;    
+  /* display: grid; */
+  /* grid-template-columns: repeat(2,1fr); */
+  
 }
 
 .stat-div{

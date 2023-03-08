@@ -20,7 +20,7 @@ function UserStatPage({user, setBackground}) {
 
   return (
        
-      <div>
+      <div className ="user-div">
         { user ? 
           <div>
             <h3>{user.name}</h3>
@@ -31,11 +31,11 @@ function UserStatPage({user, setBackground}) {
         }
         <span className ="stats-div"> 
           <div className ="stat-div">
-            {stats.win_percentage}
+           <div> {stats.win_percentage}</div>
             Win Percentage
           </div>
           <div className ="stat-div">
-            {stats.total_wins} 
+          <div>{stats.total_wins}</div>
             Total Wins
           </div>
         </span>
