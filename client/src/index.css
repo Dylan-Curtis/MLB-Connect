@@ -198,6 +198,24 @@ header .nav-btn{
   margin-left: 20px;  
 }
 
+.start-game{
+  background-color: #6CA965;
+  height: 50px;  
+  border-radius: 12px;
+  border: 0;
+  /* box-sizing: content-box; */
+  color: #000;
+  font-size: 18px; 
+  width: 10vw;
+  /* justify-content: center; */
+  margin-bottom: 1vw;
+  margin-left: 20px; 
+  /* position: relative; */
+  padding-top: 1.5vh;
+  cursor: pointer;
+}
+
+
 .cell-correct{
   height: 50px;
   position: relative;
@@ -215,6 +233,8 @@ header .nav-btn{
   margin-left: 20px;  
   background-color: #6CA965
 }
+
+
 .cell-incorrect{
   height: 50px;
   position: relative;
@@ -283,7 +303,7 @@ header .nav-btn{
   font-size: 14px;
   font-weight: 500;
   height: 48px;
-  justify-content: center;
+  padding: 2px 24px;
   letter-spacing: .25px;
   line-height: normal;
   max-width: 100%;
@@ -357,6 +377,8 @@ header .nav-btn{
   text-align: center;
   width: 100%;
 }
+
+
 
 .go-back {
   background-color: #F3C831;
@@ -484,4 +506,11 @@ header .nav-btn{
   position: relative;
   box-sizing: content-box;
  
+}
+.subtitle {
+  color: #FFFFFF;
+  font-family: 'Poppins';
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
 }

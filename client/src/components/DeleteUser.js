@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 
-function UserComponent({ user }) {
-  const [deletedUser, setDeletedUser] = useState(null);
+function DeleteUser({ user, setBackground }) {
+
+  const navigate = useNavigate();
+  setBackground("App-background2") 
 
   const handleDeleteUser = (e) => {
     e.preventDefault();
@@ -9,17 +12,23 @@ function UserComponent({ user }) {
       method: "DELETE",
     }).then((r) => {
       if (r.status === 204) {
-        
+        navigate(`/signup`)
       }
     });
   };
 
+  function goBack() {
+    navigate(`/stats`)
+  }
+
   return (
     <div className="form">          
     <label >Are You Sure?</label>
-    <button class="submit" onClick={handleDeleteUser}>Yes</button>             
+    <label className="subtitle">This Action Cannot Be Undone</label>
+    <button class="submit" onClick={handleDeleteUser}>Yes</button> 
+    <button class="go-back" onClick={ goBack }>No, Go Back</button>                  
 </div> 
   );
 }
 
-export default UserComponent;
+export default DeleteUser;

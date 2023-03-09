@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {Link} from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
+import { BackgroundContext } from './Context/BackgroundContext';
 
-function SignupForm({ setUser, setErrors }) {
+
+function SignupForm({ setUser, errors }) {
     const [password, setPassword] = useState("");  
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const navigate = useNavigate();
-
+    const navigate = useNavigate();    
+    const {setBackground} = useContext(BackgroundContext)
+    setBackground("App-background4") 
     function handleSubmit(e) {
         e.preventDefault(); 
         const userData ={
@@ -66,8 +69,12 @@ function SignupForm({ setUser, setErrors }) {
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}             
-            />     
-           
+            />    
+            {errors && errors.map((err) => (
+                    <p key={err} style={{ color: "red" }}>
+                    {err}
+                    </p> 
+            ))}
             <button type="submit" class="submit" >Submit</button>
             <div class="subtitle">Have An Account Already? <Link class= 'link' to="/login"> Log In!</Link></div>
         </form>

@@ -3,13 +3,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
-
+import { BackgroundProvider } from "./components/Context/BackgroundContext.js"
 
 ReactDOM.render(
- 
-  <BrowserRouter>
+  <BackgroundProvider>
+    <BrowserRouter>
       <App/>
-  </BrowserRouter>, 
+    </BrowserRouter> 
+  </BackgroundProvider>,
    document.getElementById('root')
 );
 

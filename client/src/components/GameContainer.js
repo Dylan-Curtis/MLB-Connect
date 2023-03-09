@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import Timer from './Timer'
 
 
-function GameContainer(user){
+function GameContainer({user, date}){
   
     const [cellOne, setCellOne] = useState("");
     const [cellTwo, setCellTwo] = useState("");
@@ -139,12 +139,12 @@ fetchTeam6Players()}
 
 },[game])
 
-function endGame (){}
+function endGame (){
 const correctInputs = document.querySelectorAll(".cell-correct")
 if( correctInputs.length === 9 && !gameOver){  
   setGameOver(true)
 }
-
+}
 
 
 if (Object.keys(game).length === 0) return <div>Loading</div>

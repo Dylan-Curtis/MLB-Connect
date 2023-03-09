@@ -1,6 +1,9 @@
 import { useState } from "react";
-function EditUser({ onLogin, setErrors, user,setBackground }) { 
+import { useNavigate } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
+function EditUser({ onLogin, setErrors, user,setBackground }) { 
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     
@@ -29,9 +32,13 @@ function EditUser({ onLogin, setErrors, user,setBackground }) {
           }
         });
       }
+      function goBack() {
+        navigate(`/stats`)
+      }
 
     return (
-        <form onSubmit={handleSubmit} className="form">    
+        <form onSubmit={handleSubmit} className="form">  
+        <label >Time To Rebrand?</label>  
             <input
               class="input-container"
               type="text"
@@ -52,6 +59,8 @@ function EditUser({ onLogin, setErrors, user,setBackground }) {
             />         
            
             <button class="submit" type="submit">Submit</button>
+            <button class="go-back" onClick={ goBack }>No, Go Back</button> 
+            <div class="subtitle">Want a Fresh Start?<Link class= 'link' to="/delete-user"> Delete Profile</Link></div>     
         </form>
             
             )
