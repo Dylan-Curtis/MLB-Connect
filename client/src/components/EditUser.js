@@ -57,9 +57,9 @@ function EditUser({ onLogin, setErrors, user,setBackground }) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />         
-           
-            <button class="submit" type="submit">Submit</button>
-            <button class="go-back" onClick={ goBack }>No, Go Back</button> 
+           <div className = "button-container">
+            <button class="confermation" type="submit">Submit</button>
+            <button class="go-back" onClick={ goBack }>No, Go Back</button> </div>
             <div class="subtitle">Want a Fresh Start?<Link class= 'link' to="/delete-user"> Delete Profile</Link></div>     
         </form>
             

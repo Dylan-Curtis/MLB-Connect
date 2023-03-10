@@ -22,8 +22,10 @@ function ResetStats({setStats, setBackground}) {
     return (
         <div className="form">          
             <label >Are You Sure?</label>
-            <button class="submit" onClick={ handleClick }>Yes</button>    
-            <button class="go-back" onClick={ goBack }>No, Go Back</button>          
+            <div class = "button-container">
+            <button class="confermation" onClick={ handleClick }>Yes</button>    
+            <button class="go-back" onClick={ goBack }>No, Go Back</button>      
+            </div>    
         </div>            
             )
 }
