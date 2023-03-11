@@ -10,10 +10,11 @@ import GameInstructions from './components/GameInstructions'
 import EditUser from './components/EditUser'
 import ResetStats from './components/ResetStats';
 import DeleteUser from './components/DeleteUser'
+import EndPage from './components/EndPage'
 import { BackgroundContext } from './components/Context/BackgroundContext';
 
 function App() {
-  // const [showNavBar, setShowNavBar] = useState(false)
+
   const [user, setUser] = useState(null)
   const [errors, setErrors] = useState([]);
   const {background, setBackground} = useContext(BackgroundContext)
@@ -40,10 +41,11 @@ function App() {
            <Route path="/signup" element= {<SignupForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser} setBackground={setBackground}/>} />
            <Route path="/login" element= {<LoginForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser} setBackground={setBackground}/>} /> 
            <Route path="/edit-user" element= {<EditUser onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser} setBackground={setBackground}/>} /> 
-           <Route path= "/stats" element= {<UserStatPage  errors = {errors} setErrors={setErrors} user={user} setBackground={setBackground} />}   />   
+           <Route path= "/stats" element= {<UserStatPage  errors = {errors} setErrors={setErrors} user={user} setBackground={setBackground} />} />   
            <Route path= "/game-instructions" element= {<GameInstructions setBackground={setBackground}/>} />      
            <Route path= "/reset-stats" element= {<ResetStats setBackground={setBackground}/>} />    
-           <Route path= "/delete-user" element= {<DeleteUser setBackground={setBackground} user={user} setUser = {setUser} errors = {errors}/>} />      
+           <Route path= "/delete-user" element= {<DeleteUser setBackground={setBackground} user={user} setUser = {setUser} errors = {errors}/>} /> 
+           <Route path= "/end-page" element= {<EndPage setBackground={setBackground}/>} />      
         </Routes>           
       </header>
     </div>

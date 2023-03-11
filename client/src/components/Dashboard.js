@@ -5,7 +5,7 @@ import BlankGame from './BlankGame'
 
 function Dashboard({user, setUser, errors, setErrors, setBackground}) { 
   const [startGame, setStartGame] = useState(false)
-  setBackground("App-background5")
+  setBackground("App-background7")
 
   const gamePage = !user ? (
     <SignupForm setUser={setUser} errors={errors} setErrors={setErrors} user={user} />

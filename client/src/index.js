@@ -4,12 +4,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import { BackgroundProvider } from "./components/Context/BackgroundContext.js"
+import { RetryProvider } from './components/Context/RetryContext';
 
 ReactDOM.render(
   <BackgroundProvider>
+    <RetryProvider>
     <BrowserRouter>
       <App/>
     </BrowserRouter> 
+    </RetryProvider>
   </BackgroundProvider>,
    document.getElementById('root')
 );

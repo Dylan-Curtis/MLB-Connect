@@ -13,7 +13,7 @@ class ScoresController < ApplicationController
         game = Game.find_by(id: params[:game][:id])
       
         if user.present? && game.present?
-          score = Score.create(score_params.merge(user: user, game: game))
+          score = Score.create(score_params.merge( user: @user, game: game))
           render json: score, status: :created
         else
           render json: { errors: ["User or Game not found"] }, status: :unprocessable_entity
@@ -29,10 +29,10 @@ class ScoresController < ApplicationController
       end
     end
 
-    private 
-       def score_params
-        params.require(:score).permit(:time, game: [:id, :date], user: [:id, :name, :email])
-     end
+private 
+    def score_params
+      params.require(:score).permit(:time, game: [:id, :date], user: [:id, :name, :email])
+    end
 
     def find_score
       @score = score = Score.find_by(game_id: game_id, user_id: user_id)

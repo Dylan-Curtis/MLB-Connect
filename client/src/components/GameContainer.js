@@ -1,8 +1,7 @@
 import {useState, useEffect} from 'react'
 import Timer from './Timer'
 
-
-function GameContainer({user, date}){
+function GameContainer({user}){
   
     const [cellOne, setCellOne] = useState("");
     const [cellTwo, setCellTwo] = useState("");

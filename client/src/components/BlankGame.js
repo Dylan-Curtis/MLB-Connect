@@ -1,7 +1,3 @@
-import { useState } from 'react'
-
-
-
 function BlankGame( { setStartGame }){
 
     function startGame(){

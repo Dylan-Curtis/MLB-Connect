@@ -2,7 +2,6 @@ import {Link} from 'react-router-dom'
 import {useState} from 'react'
 import { useNavigate } from "react-router-dom";
 
-
 function LoginForm({ onLogin, setErrors, errors, setBackground }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
-function EditUser({ onLogin, setErrors, user,setBackground }) { 
+function EditUser({ onLogin, user,setBackground }) { 
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");

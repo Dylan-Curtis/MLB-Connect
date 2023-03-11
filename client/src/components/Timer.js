@@ -1,22 +1,24 @@
 import { useState, useEffect } from 'react';
-import EndPage from './EndPage';
+import { useNavigate } from 'react-router-dom'
+
 function Timer( {game, user, gameOver, setGameOver}) {
   
   const [minutes, setMinutes] = useState(10);
   const [seconds, setSeconds] = useState(0);
   const [retry, setRetry] =useState(false);  
   const [stat, setStat] =useState({});  
- 
+  const navigate = useNavigate() 
  
   function PostScore(){
-    
+   
   const totalSeconds = (minutes * 60) + seconds;
         const timeFloat = totalSeconds / 60;
         const scoreData ={
           game: (game[0].game),
-          user: (user.user),        
+          user: (user),        
           time: timeFloat
         } 
+        console.log(scoreData)
         if(!retry){
         fetch(`/newstat`, {
         method: 'POST',
@@ -24,15 +26,16 @@ function Timer( {game, user, gameOver, setGameOver}) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(scoreData)
+        
       })
+      
       .then((r) => {
         if (r.status === 201){
-         r.json()
-        //  .then(userOBJ=> {
-        //  setUser(userOBJ)
-        setStat(stat)  
-           
-        //  })
+         r.json()       
+        .then(() => {
+          setStat(scoreData)
+          navigate('/end-page');
+        })        
         }
         else {
          r.json()
@@ -41,7 +44,7 @@ function Timer( {game, user, gameOver, setGameOver}) {
        })}
 
      if (retry){      
-      fetch('/updatestat', {
+      fetch('/stats', {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
@@ -63,9 +66,10 @@ function Timer( {game, user, gameOver, setGameOver}) {
             });
         }
       });
-    }}
-     
+    }
+      }
        if(gameOver){
+        
         PostScore()
        }
 
@@ -75,7 +79,7 @@ function Timer( {game, user, gameOver, setGameOver}) {
   useEffect(() => {   
 
     const interval = setInterval(() => {
-     
+      
       if (seconds > 0) {
         setSeconds(seconds - 1);
       } else if (minutes > 0) {
@@ -94,7 +98,7 @@ function Timer( {game, user, gameOver, setGameOver}) {
 
   return (
     <div class='cell'>
-      {!gameOver? `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`:<EndPage setRetry={setRetry} stat={stat}/>}
+      { `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}
       
     </div>
   );

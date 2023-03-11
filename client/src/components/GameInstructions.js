@@ -1,5 +1,3 @@
-import React from "react";
-
 function GameInstructions({setBackground}) {
   setBackground("App-background6") 
   return (
