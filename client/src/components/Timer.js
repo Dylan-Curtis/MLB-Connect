@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
-
+import EndPage from './EndPage';
 function Timer( {game, user, gameOver, setGameOver}) {
   
   const [minutes, setMinutes] = useState(10);
   const [seconds, setSeconds] = useState(0);
-  const navigate = useNavigate()
+  const [retry, setRetry] =useState(false);  
+  const [stat, setStat] =useState({});  
+ 
  
   function PostScore(){
-
+    
   const totalSeconds = (minutes * 60) + seconds;
         const timeFloat = totalSeconds / 60;
         const scoreData ={
@@ -16,7 +17,7 @@ function Timer( {game, user, gameOver, setGameOver}) {
           user: (user.user),        
           time: timeFloat
         } 
-        
+        if(!retry){
         fetch(`/newstat`, {
         method: 'POST',
         headers: {
@@ -28,19 +29,47 @@ function Timer( {game, user, gameOver, setGameOver}) {
         if (r.status === 201){
          r.json()
         //  .then(userOBJ=> {
-        //  setUser(userOBJ)  
-         navigate("/stats");     
+        //  setUser(userOBJ)
+        setStat(stat)  
+           
         //  })
         }
         else {
          r.json()
          .then(error=>  console.log(error.errors))
-         navigate("/stats");  }
+           }
        })}
 
+     if (retry){      
+      fetch('/updatestat', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(scoreData)
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          // handle success
+          response.json()
+            .then(updatedData => {
+              console.log('Successfully updated data:', updatedData);
+            });
+        } else {
+          // handle error
+          response.json()
+            .then(error => {
+              console.log('Error updating data:', error.errors);
+            });
+        }
+      });
+    }}
+     
        if(gameOver){
         PostScore()
        }
+
+       
 
 
   useEffect(() => {   
@@ -65,7 +94,8 @@ function Timer( {game, user, gameOver, setGameOver}) {
 
   return (
     <div class='cell'>
-      {`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}
+      {!gameOver? `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`:<EndPage setRetry={setRetry} stat={stat}/>}
+      
     </div>
   );
 }

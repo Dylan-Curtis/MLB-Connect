@@ -18,14 +18,24 @@ class ScoresController < ApplicationController
         else
           render json: { errors: ["User or Game not found"] }, status: :unprocessable_entity
         end 
-    end 
-    #  def update
-    #      @user.update(score_params)
-    #      render json: @user, status: :ok
-    #  end
+    end     
+
+    def update
+      score = Score.update_score(params[:game_id], params[:value])
+      if score
+        render json: score
+      else
+        render json: { error: 'Score not found' }, status: :not_found
+      end
+    end
+
     private 
        def score_params
         params.require(:score).permit(:time, game: [:id, :date], user: [:id, :name, :email])
      end
+
+    def find_score
+      @score = score = Score.find_by(game_id: game_id, user_id: user_id)
+    end
      
 end

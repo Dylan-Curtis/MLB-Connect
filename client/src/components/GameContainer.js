@@ -27,6 +27,7 @@ function GameContainer({user, date}){
     const [team6Players, setTeam6Players] = useState([]); 
 
     const [gameOver, setGameOver] = useState(false);
+    
 
     function checkCell(answer, topTeam, sideTeam, cell) {  
       
@@ -51,9 +52,8 @@ function resetCell(e){
       const today = new Date().toISOString().slice(0, 10);
       const response = await fetch(`/games/${today}`);
       const data = await response.json();
-      console.log(data)    
+      console.log(data) 
       setGame(data);
-      
     } 
 if(Object.keys(game).length === 0 ){
   fetchGame()}
