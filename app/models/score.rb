@@ -3,7 +3,7 @@ class Score < ApplicationRecord
   belongs_to :game
   validates :game_id, uniqueness: { scope: :user_id }
 
-
+ 
 
   def self.total_wins
     total_wins = where("time > ?", 0).count

@@ -1,16 +1,16 @@
 import { useNavigate } from 'react-router-dom'
 
-function ResetStats({setStats, setBackground}) { 
+function ResetStats({ setBackground, user}) { 
     const navigate = useNavigate();
     setBackground("App-background2") 
     function handleClick(e) {        
         e.preventDefault()
-        fetch(`/reset_stats`, {
+        fetch(`/scores/${user.id}`, {
         method: 'DELETE'
     })
     .then(r => {
         if(r.status === 204){
-            setStats({})} 
+            } 
             navigate(`/stats`)
         })
       }

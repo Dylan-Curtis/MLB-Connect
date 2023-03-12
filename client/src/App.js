@@ -43,7 +43,7 @@ function App() {
            <Route path="/edit-user" element= {<EditUser onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser} setBackground={setBackground}/>} /> 
            <Route path= "/stats" element= {<UserStatPage  errors = {errors} setErrors={setErrors} user={user} setBackground={setBackground} />} />   
            <Route path= "/game-instructions" element= {<GameInstructions setBackground={setBackground}/>} />      
-           <Route path= "/reset-stats" element= {<ResetStats setBackground={setBackground}/>} />    
+           <Route path= "/reset-stats" element= {<ResetStats setBackground={setBackground} user={user}/>} />    
            <Route path= "/delete-user" element= {<DeleteUser setBackground={setBackground} user={user} setUser = {setUser} errors = {errors}/>} /> 
            <Route path= "/end-page" element= {<EndPage setBackground={setBackground}/>} />      
         </Routes>           

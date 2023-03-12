@@ -8,7 +8,7 @@ function Timer( {game, user, gameOver, setGameOver}) {
   const [seconds, setSeconds] = useState(0);  
   const {stat,retry, setRetry, setStat} = useContext(RetryContext)
   const navigate = useNavigate() 
- 
+  // const gameId = game[0].game
   function PostScore(){
    
   const totalSeconds = (minutes * 60) + seconds;
@@ -44,7 +44,7 @@ function Timer( {game, user, gameOver, setGameOver}) {
        })}
 
      if (retry){      
-      fetch('/stats', {
+      fetch(`/scores/:gameId`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
@@ -55,9 +55,10 @@ function Timer( {game, user, gameOver, setGameOver}) {
         if (response.status === 200) {
           // handle success
           response.json()
-            .then(updatedData => {
-              console.log('Successfully updated data:', updatedData);
-            });
+          .then(() => {
+           
+            navigate('/stats');
+          });
         } else {
           // handle error
           response.json()
@@ -69,7 +70,7 @@ function Timer( {game, user, gameOver, setGameOver}) {
     }
       }
        if(gameOver){
-        
+        // debugger
         PostScore()
        }
 

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 
 function UserStatPage({user, setBackground}) {
-  console.log(user)
+  
   const [stats, setStats] = useState({}); 
   setBackground("App-background2")  
   useEffect(() => {

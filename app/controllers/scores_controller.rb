@@ -1,4 +1,5 @@
 class ScoresController < ApplicationController
+  before_action :find_games, only: [:find_score]
     def index        
         @scores = @user.scores
         total_wins =@scores.total_wins
@@ -20,19 +21,18 @@ class ScoresController < ApplicationController
         end 
     end  
    
-    def destroy          
+    def destroy        
         @user.scores.destroy_all
         head :no_content, status: 204    
       end
       
 
-    def update
-      score = Score.update_score(params[:game_id], params[:value])
-      if score
-        render json: score
-      else
-        render json: { error: 'Score not found' }, status: :not_found
-      end
+      def update 
+        user = User.find_by(id: params[:user][:id])
+        game = Game.find_by(id: params[:game][:id])   
+        score = Score.find_by(game: game, user: user) 
+        score.update(score_params)
+        render json: score, status: :ok
     end
 
     
@@ -42,8 +42,8 @@ private
       params.require(:score).permit(:time, game: [:id, :date], user: [:id, :name, :email])
     end
 
-    def find_score
-      @score = score = Score.find_by(game_id: game_id, user_id: user_id)
-    end
+    # def find_score
+    #   Score.find_by(game_id: @game.id, user_id: @user.id)
+    # end
      
 end
