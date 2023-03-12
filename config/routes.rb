@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   post "/newstat", to: "scores#create"
   delete "/logout", to: "sessions#logout"
+  delete '/scores/:id', to: 'scores#destroy', as: 'reset_stats'
   get "/authorized_user", to: "users#show" 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? } 
 # root 'pages#home'

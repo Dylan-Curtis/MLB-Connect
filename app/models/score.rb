@@ -1,12 +1,8 @@
 class Score < ApplicationRecord
   belongs_to :user
   belongs_to :game
-  validates :game_id, uniqueness: true
+  validates :game_id, uniqueness: { scope: :user_id }
 
-  def self.destroy
-    # user_id=@user.id
-    where(user_id: @user.id).delete_all.delete_all
-  end
 
 
   def self.total_wins

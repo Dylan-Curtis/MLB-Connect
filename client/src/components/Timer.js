@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { RetryContext } from './Context/RetryContext';
 
 function Timer( {game, user, gameOver, setGameOver}) {
   
   const [minutes, setMinutes] = useState(10);
-  const [seconds, setSeconds] = useState(0);
-  const [retry, setRetry] =useState(false);  
-  const [stat, setStat] =useState({});  
+  const [seconds, setSeconds] = useState(0);  
+  const {stat,retry, setRetry, setStat} = useContext(RetryContext)
   const navigate = useNavigate() 
  
   function PostScore(){

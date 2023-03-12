@@ -5,7 +5,7 @@ function ResetStats({setStats, setBackground}) {
     setBackground("App-background2") 
     function handleClick(e) {        
         e.preventDefault()
-        fetch(`/scores`, {
+        fetch(`/reset_stats`, {
         method: 'DELETE'
     })
     .then(r => {

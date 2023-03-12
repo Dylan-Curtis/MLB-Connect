@@ -13,12 +13,18 @@ class ScoresController < ApplicationController
         game = Game.find_by(id: params[:game][:id])
       
         if user.present? && game.present?
-          score = Score.create(score_params.merge( user: @user, game: game))
+          score = Score.create(score_params.merge( user: user, game: game))
           render json: score, status: :created
         else
           render json: { errors: ["User or Game not found"] }, status: :unprocessable_entity
         end 
-    end     
+    end  
+   
+    def destroy          
+        @user.scores.destroy_all
+        head :no_content, status: 204    
+      end
+      
 
     def update
       score = Score.update_score(params[:game_id], params[:value])
@@ -28,6 +34,8 @@ class ScoresController < ApplicationController
         render json: { error: 'Score not found' }, status: :not_found
       end
     end
+
+    
 
 private 
     def score_params
