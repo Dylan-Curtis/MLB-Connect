@@ -20,7 +20,7 @@ function EndPage({ setBackground}) {
   return (
     <div className ="user-div">
      <div class="title">{stat.time > 0 ? "Thats a Good Piece of Thinkin'" : "Oh No! Better Luck Next Time"}</div> 
-     You got it in {formattedTime}
+     You got it with {formattedTime} remaining!
         <div className = "button-container">  
                   
           <button className="retry"  onClick={() =>handleRetry()}>Retry</button>

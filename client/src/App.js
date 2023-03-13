@@ -13,6 +13,7 @@ import DeleteUser from './components/DeleteUser'
 import EndPage from './components/EndPage'
 import { BackgroundContext } from './components/Context/BackgroundContext';
 
+
 function App() {
 
   const [user, setUser] = useState(null)
@@ -31,6 +32,19 @@ function App() {
     fetchUser()}
   },[])
 
+  
+  // useEffect(()=>{ 
+  //   /* global google */
+  //   google.accounts.id.initialize({
+  //     client_id:"611735999133-91k8aa6jl0ekai3tumsdfqachphud4r6.apps.googleusercontent.com",
+  //     callback: handleCallbackResponse
+  //   })
+  //   // google.accounts.id.renderButton(
+  //   //   document.getElemantById("logIn"),
+  //   //   {theme: "outline", size: 'large'}
+  //   // )
+  // },[])
+
 
   return (
     <div className="App">
@@ -38,8 +52,8 @@ function App() {
       <header className={background}>    
         <Routes>
            <Route path="/" element={<Dashboard user={user} setUser={setUser}  errors = {errors} setErrors={setErrors} setBackground={setBackground}/> } />
-           <Route path="/signup" element= {<SignupForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser} setBackground={setBackground}/>} />
-           <Route path="/login" element= {<LoginForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser} setBackground={setBackground}/>} /> 
+           <Route path="/signup" element= {<SignupForm onLogin={setUser} errors = {errors} setErrors={setErrors} user={user}  setBackground={setBackground}/>} />
+           <Route path="/login" element= {<LoginForm id="login" onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setBackground={setBackground}/>} /> 
            <Route path="/edit-user" element= {<EditUser onLogin={setUser} errors = {errors} setErrors={setErrors} user={user} setUser = {setUser} setBackground={setBackground}/>} /> 
            <Route path= "/stats" element= {<UserStatPage  errors = {errors} setErrors={setErrors} user={user} setBackground={setBackground} />} />   
            <Route path= "/game-instructions" element= {<GameInstructions setBackground={setBackground}/>} />      

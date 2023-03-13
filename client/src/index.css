@@ -57,7 +57,7 @@ header h3{
   cursor: pointer;
 }
 
-header h3:hover{
+header h3:not(#no-hover):hover{
   color: var(--secondaryColor)
 }
 

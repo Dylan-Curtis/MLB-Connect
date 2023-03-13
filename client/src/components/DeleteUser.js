@@ -23,9 +23,10 @@ function DeleteUser({ user, setBackground }) {
   return (
     <div className="form">          
     <label >Are You Sure?</label>
-    <label className="subtitle">This Action Cannot Be Undone</label>
+    <div><label className="subtitle">This Action Cannot Be Undone</label></div>
+    <div class = "button-container">
     <button class="submit" onClick={handleDeleteUser}>Yes</button> 
-    <button class="go-back" onClick={ goBack }>No, Go Back</button>                  
+    <button class="go-back" onClick={ goBack }>No, Go Back</button> </div>                 
 </div> 
   );
 }

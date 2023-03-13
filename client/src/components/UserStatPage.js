@@ -23,7 +23,7 @@ function UserStatPage({user, setBackground}) {
       <div className ="user-div">
         { user ? 
           <div>
-            <h3>{user.name}</h3>
+            <h3 id="no-hover">{user.name}</h3>
             <Link to='/edit-user'><h3>Edit Account </h3></Link>
             <Link to='/reset-stats'><h3>Reset Stats</h3></Link>
           </div> 

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { BackgroundContext } from './Context/BackgroundContext';
 
 
-function SignupForm({ setUser, errors }) {
+function SignupForm({ onLogin, errors, setErrors }) {
     const [password, setPassword] = useState("");  
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -29,13 +29,13 @@ function SignupForm({ setUser, errors }) {
          if (r.status === 201){
           r.json()
           .then(userOBJ=> {
-          setUser(userOBJ)  
+          onLogin(userOBJ)  
           navigate("/");     
           })
          }
          else {
-          r.json()
-          .then(error=>  console.log(error.errors))}
+          r.json().then((err) => setErrors([err.error]));
+        }
         })
         };      
 
