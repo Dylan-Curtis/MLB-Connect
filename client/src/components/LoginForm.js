@@ -28,7 +28,7 @@ function LoginForm({ onLogin, setErrors, errors, setBackground }) {
   }
 
   const oauth = (userObject, navigate) => {
-    // console.log(userObject)
+    
     fetch('/oauth', {
       method: 'POST',
       headers: {
@@ -39,7 +39,7 @@ function LoginForm({ onLogin, setErrors, errors, setBackground }) {
       if (resp.status === 201) {
         resp.json().then((data) => {
           onLogin(data);
-          // navigate('/');
+         
         });
       }
     });
@@ -102,7 +102,7 @@ function LoginForm({ onLogin, setErrors, errors, setBackground }) {
           <button type="submit" class="submit">
             Submit
           </button>
-          <div id='signInDiv'></div>
+          <div id='signInDiv' ></div>
           
           <div class="subtitle">
             Don't Have an Account?<Link class="link" to="/signup">
@@ -115,7 +115,7 @@ function LoginForm({ onLogin, setErrors, errors, setBackground }) {
     );
   };
 
-  // return <>{oauthLogin()}</>;
+ 
 
 
 export default LoginForm;

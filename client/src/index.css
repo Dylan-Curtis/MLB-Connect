@@ -65,6 +65,13 @@ nav a:hover{
   color: var(--secondaryColor)
 }
 
+#signInDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* add some margin to separate from other elements */
+}
+
 header .nav-btn{
   padding: 5px;
   cursor: pointer;
