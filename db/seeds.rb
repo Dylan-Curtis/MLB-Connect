@@ -112,8 +112,8 @@ team_ids = [121 ,120, 146, 143, 144, 134, 113, 158, 138, 112, 135, 119, 109, 115
 def get_data_from_api(team_ids)
   team_ids.each do |id|
     puts id
-    url = URI("https://mlb-data.p.rapidapi.com/json/named.roster_team_alltime.bam?start_season='2000'&team_id=#{id}&end_season='2022'&sort_order=name_asc")
-     
+    url = URI("https://lookup-service-prod.mlb.com/json/named.roster_team_alltime.bam?start_season='2000'&team_id=#{id}&end_season='2022'&sort_order=name_asc")
+    
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -139,10 +139,8 @@ get_data_from_api(team_ids)
 
 puts 'creating user'
 
-User.create(name: 'Dylan', email: "dcurtisj@gmail.com", password:"password")
-
 puts 'creating games'
-dates = [Date.new(2023,03,1), '2023-03-02', '2023-03-03', '2023-03-04', '2023-03-05', '2023-03-06', '2023-03-07', '2023-03-08', '2023-03-09', '2023-03-10', '2023-03-11', '2023-03-12', '2023-03-13', '2023-03-14', '2023-03-15']
+dates = ['2023-05-01', '2023-05-02', '2023-05-03', '2023-05-04', '2023-05-05', '2023-05-06', '2023-05-07', '2023-05-08', '2023-05-09', '2023-05-10', '2023-05-11', '2023-05-12', '2023-05-13', '2023-05-14', '2023-05-15']
 15.times {
  puts"createing a game"
    Game.create!( 
