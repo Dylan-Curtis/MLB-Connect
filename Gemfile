@@ -56,7 +56,6 @@ end
 gem "active_model_serializers", "~> 0.10.12"
 gem "faker", "~> 2.20"
 # gem 'dotenv-rails', groups: [:development, :test]
-gem 'dotenv-rails', :require => 'dotenv/rails-now'
+ gem 'dotenv-rails', :require => 'dotenv/rails-now'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
-
