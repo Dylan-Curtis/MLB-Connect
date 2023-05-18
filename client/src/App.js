@@ -2,6 +2,7 @@ import {useEffect, useState, useContext} from 'react'
 import Dashboard from './components/Dashboard'
 import NavBar from './components/NavBar'
 import {Routes, Route} from 'react-router-dom'
+import './index.css';
 import './App.css';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
