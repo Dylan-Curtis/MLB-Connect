@@ -4,7 +4,7 @@ set -o errexit
 
 # builds the front end code
 rm -rf public
-npm install --prefix client && npm run build --prefix client && npm start --prefix client
+npm install --prefix client && npm run build --prefix client
 cp -a client/build/. public/
 
 # builds the back end code
