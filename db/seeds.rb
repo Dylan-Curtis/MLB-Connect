@@ -140,8 +140,16 @@ get_data_from_api(team_ids)
 puts 'creating user'
 
 puts 'creating games'
-dates = ['2023-05-01', '2023-05-02', '2023-05-03', '2023-05-04', '2023-05-05', '2023-05-06', '2023-05-07', '2023-05-08', '2023-05-09', '2023-05-10', '2023-05-11', '2023-05-12', '2023-05-13', '2023-05-14', '2023-05-15']
-15.times {
+def dates_for_next_year
+  start_date = Date.today + 1.year
+  end_date = start_date + 1.year - 1.day
+
+  (start_date..end_date).to_a
+end
+
+dates = dates_for_next_year
+#  ['2023-05-01', '2023-05-02', '2023-05-03', '2023-05-04', '2023-05-05', '2023-05-06', '2023-05-07', '2023-05-08', '2023-05-09', '2023-05-10', '2023-05-11', '2023-05-12', '2023-05-13', '2023-05-14', '2023-05-15']
+360.times {
  puts"createing a game"
    Game.create!( 
       date: dates[0])
