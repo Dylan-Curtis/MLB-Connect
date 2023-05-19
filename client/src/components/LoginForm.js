@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode';
 function LoginForm({ onLogin, setErrors, errors, setBackground }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const google = window.google;
   setBackground('App-background4');
   const navigate = useNavigate();
 
