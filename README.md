@@ -14,12 +14,11 @@ Link: https://mlb-connect.onrender.com/
 
 To get started, make sure you have set up your WSL2 or Mac environment.
 
-1. Go to the backend repository: https://github.com/Dylan-Curtis/MLB-Connect
-2. Click on "Fork" button to create a copy of the repository in your GitHub account.
+1. Click on "Fork" button to create a copy of the repository in your GitHub account.
 
    ![ForkBtn](https://www.earthdatascience.org/images/earth-analytics/git-version-control/githubguides-bootcamp-fork.png)
 
-3. Click on "Create Fork" to confirm the creation of your forked repository.
+2. Click on "Create Fork" to confirm the creation of your forked repository.
 
    ![CreateFork](https://github.com/jccaropino7786/legendary-phase1-project/blob/main/images%20and%20gifs/create%20fork.PNG?raw=true)
 
@@ -28,15 +27,15 @@ To get started, make sure you have set up your WSL2 or Mac environment.
    - Click on "Your repositories".
    - Click on "MLB-connect".
 
-4. Click on "<> Code" and select "SSH" from the drop-down menu.
+3. Click on "<> Code" and select "SSH" from the drop-down menu.
 
    ![CodeDropdown](https://github.com/Dylan-Curtis/MLB-Connect/assets/115842668/f17c3ed5-c4b5-40a9-83db-87c239ffac1e)
 
-5. Copy the SSH link to your clipboard.
+4. Copy the SSH link to your clipboard.
 
-6. Open your terminal and navigate to the desired location where you want to clone the repository.
+5. Open your terminal and navigate to the desired location where you want to clone the repository.
 
-7. Type the following command in the terminal:
+6. Type the following command in the terminal:
 
    ```
    git clone [paste the SSH link here]
@@ -44,9 +43,9 @@ To get started, make sure you have set up your WSL2 or Mac environment.
 
    Then press Enter/Return.
 
-8. Type `ls` to check if the "MLB-Connect" folder is present.
+7. Type `ls` to check if the "MLB-Connect" folder is present.
 
-9. Change directory to the "MLB-Connect" folder using the following command:
+8. Change directory to the "MLB-Connect" folder using the following command:
 
    ```
    cd MLB-Connect
@@ -54,7 +53,7 @@ To get started, make sure you have set up your WSL2 or Mac environment.
 
    Now you are inside the "MLB-Connect" folder!
 
-10. Open Visual Studio Code by typing `code .` in the terminal.
+9. Open Visual Studio Code by typing `code .` in the terminal.
 
    Your Visual Studio Code should open with the project.
 
