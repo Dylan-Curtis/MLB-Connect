@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
             u.name = params[:name] 
             u.email = params[:email] 
             u.password = SecureRandom.hex(16)
-          
+                      
           end
           if user.id
             session[:user_id] = user.id

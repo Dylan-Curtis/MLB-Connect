@@ -137,8 +137,6 @@ end
 
 get_data_from_api(team_ids)
 
-puts 'creating user'
-
 puts 'creating games'
 def dates_for_next_year
   start_date = Date.today 
